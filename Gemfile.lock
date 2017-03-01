@@ -1,3 +1,32 @@
+GIT
+  remote: https://github.com/AlchemyCMS/alchemy_cms.git
+  revision: 92e314f16200d0504326d5a6c1c699e962346a0c
+  branch: rails-5
+  specs:
+    alchemy_cms (3.6.0.beta)
+      active_model_serializers (~> 0.9.0)
+      acts-as-taggable-on (~> 4.0)
+      acts_as_list (~> 0.3)
+      awesome_nested_set (~> 3.1)
+      bourbon (~> 4.2)
+      cancancan (~> 1.9)
+      coffee-rails (~> 4.0)
+      dragonfly (~> 1.0.7)
+      dragonfly_svg (~> 0.0.4)
+      handlebars_assets (~> 0.23)
+      jquery-rails (~> 4.0)
+      jquery-ui-rails (~> 5.0.0)
+      kaminari (~> 0.15)
+      magiclabs-userstamp (~> 3.0)
+      non-stupid-digest-assets (~> 1.0.8)
+      rails (~> 5.0.0)
+      ransack (~> 1.4)
+      request_store (~> 1.2)
+      responders (~> 2.0)
+      select2-rails (>= 3.5.9.1, < 4.0)
+      simple_form (~> 3.0)
+      turbolinks (>= 2.5)
+
 GEM
   remote: https://rubygems.org/
   specs:
@@ -24,6 +53,8 @@ GEM
       erubis (~> 2.7.0)
       rails-dom-testing (~> 2.0)
       rails-html-sanitizer (~> 1.0, >= 1.0.2)
+    active_model_serializers (0.9.6)
+      activemodel (>= 3.2)
     activejob (5.0.1)
       activesupport (= 5.0.1)
       globalid (>= 0.3.6)
@@ -50,7 +81,7 @@ GEM
     addressable (2.5.0)
       public_suffix (~> 2.0, >= 2.0.2)
     arel (7.1.4)
-    autoprefixer-rails (6.7.5)
+    autoprefixer-rails (6.7.6)
       execjs
     awesome_nested_set (3.1.1)
       activerecord (>= 4.0.0, < 5.1)
@@ -58,6 +89,9 @@ GEM
     bootstrap-sass (3.3.7)
       autoprefixer-rails (>= 5.2.1)
       sass (>= 3.3.4)
+    bourbon (4.3.3)
+      sass (~> 3.4)
+      thor (~> 0.19)
     builder (3.2.3)
     byebug (9.0.6)
     camertron-eprun (1.1.1)
@@ -95,6 +129,13 @@ GEM
       warden (~> 1.2.3)
     devise-encryptable (0.1.2)
       devise (>= 2.1.0)
+    dragonfly (1.0.12)
+      addressable (~> 2.3)
+      multi_json (~> 1.0)
+      rack (>= 1.3.0)
+    dragonfly_svg (0.0.4)
+      dragonfly (~> 1.0)
+      nokogiri
     erubis (2.7.0)
     execjs (2.7.0)
     ffaker (2.2.0)
@@ -105,6 +146,11 @@ GEM
       activerecord (>= 4.0.0)
     globalid (0.3.7)
       activesupport (>= 4.1.0)
+    handlebars_assets (0.23.1)
+      execjs (~> 2.0)
+      multi_json (~> 1.0)
+      sprockets (>= 2.0.0)
+      tilt (>= 1.2)
     highline (1.6.21)
     htmlentities (4.3.4)
     i18n (0.7.0)
@@ -122,6 +168,9 @@ GEM
       rb-inotify (~> 0.9, >= 0.9.7)
     loofah (2.0.3)
       nokogiri (>= 1.5.9)
+    magiclabs-userstamp (3.0)
+      actionpack (>= 4.0)
+      activerecord (>= 4.0)
     mail (2.6.4)
       mime-types (>= 1.16, < 4)
     method_source (0.8.2)
@@ -136,9 +185,12 @@ GEM
     money (6.8.1)
       i18n (>= 0.6.4, <= 0.7.0)
       sixarm_ruby_unaccent (>= 1.1.1, < 2)
+    multi_json (1.12.1)
     nio4r (1.2.1)
     nokogiri (1.6.8.1)
       mini_portile2 (~> 2.1.0)
+    non-stupid-digest-assets (1.0.9)
+      sprockets (>= 2.0)
     orm_adapter (0.5.0)
     paperclip (4.3.7)
       activemodel (>= 3.2.0)
@@ -198,6 +250,7 @@ GEM
     rb-fsevent (0.9.8)
     rb-inotify (0.9.8)
       ffi (>= 0.5.0)
+    request_store (1.3.2)
     responders (2.3.0)
       railties (>= 4.2.0, < 5.1)
     sass (3.4.23)
@@ -209,6 +262,9 @@ GEM
       tilt (>= 1.1, < 3)
     select2-rails (3.5.9.1)
       thor (~> 0.14)
+    simple_form (3.4.0)
+      actionpack (> 4, < 5.1)
+      activemodel (> 4, < 5.1)
     sixarm_ruby_unaccent (1.1.1)
     spree (3.2.0.rc3)
       spree_api (= 3.2.0.rc3)
@@ -291,6 +347,9 @@ GEM
     thor (0.19.4)
     thread_safe (0.3.6)
     tilt (2.0.6)
+    turbolinks (5.0.1)
+      turbolinks-source (~> 5)
+    turbolinks-source (5.0.0)
     twitter_cldr (3.6.0)
       camertron-eprun
       cldr-plurals-runtime-rb (~> 1.0)
@@ -319,6 +378,7 @@ PLATFORMS
   ruby
 
 DEPENDENCIES
+  alchemy_cms!
   byebug
   coffee-rails
   listen (~> 3.0.5)
@@ -326,7 +386,7 @@ DEPENDENCIES
   puma (~> 3.0)
   rails (~> 5.0.1)
   sass-rails (~> 5.0)
-  spree (~> 3.2.0.rc1)
+  spree (~> 3.2.0.rc3)
   spree_auth_devise (~> 3.2.0.beta)
   spree_gateway (~> 3.2.0.beta)
   spring
