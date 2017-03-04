@@ -2,7 +2,45 @@
 #
 # For further information please see http://guides.alchemy-cms.com/stable/page_layouts.html
 
+# Pages
 - name: index
   unique: true
-  elements: [article]
-  autogenerate: [article]
+  elements:
+    - article
+  autogenerate: []
+
+- name: pages
+  elements:
+    - article
+  autogenerate: []
+
+- name: page
+  elements:
+    - article
+  autogenerate: []
+
+- name: products
+  elements:
+    - article
+  autogenerate: []
+
+- name: product
+  elements:
+    - article
+  autogenerate: []
+
+- name: external
+  redirects_to_external: true
+
+# Global Pages
+- name: header
+  unique: true
+  elements: []
+  autogenerate: []
+  layoutpage: true
+
+- name: footer
+  unique: true
+  elements: []
+  autogenerate: []
+  layoutpage: true
