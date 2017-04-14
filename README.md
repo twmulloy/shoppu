@@ -1,24 +1,48 @@
-# README
+# ショップ 「shoppu」
+## Development
+### Dependencies
+#### OSX
+* [Homebrew](https://github.com/Homebrew/brew)
+* [VirtualBox](https://www.virtualbox.org/wiki/Downloads)
+* [Dinghy](https://github.com/codekitchen/dinghy)
+* [Docker Compose](https://docs.docker.com/compose)
+### Setup
+One time setup steps.
+#### Files
+Create `.env` for sensitive environment variables that should not be committed.
+```
+$ touch .env
+```
+#### Database
+```
+$ docker-compose run web rails db:setup
+```
+### Work
+Each time you pull, the following will likely need to be done.
+```
+# Build
+$ docker-compose build
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
+# Bundler
+$ docker-compose run web bundle
 
-Things you may want to cover:
+# Npm
+$ docker-compose run web npm i
 
-* Ruby version
+# Migrate
+$ docker-compose run web rails db:migrate
 
-* System dependencies
+# Run
+$ docker-compose up
+```
+### Docker
+`./Dockerfile`, `./docker-compose.yml`
 
-* Configuration
+```
+# Build development image
+$ docker build -t shoppu/shoppu .
 
-* Database creation
-
-* Database initialization
-
-* How to run the test suite
-
-* Services (job queues, cache servers, search engines, etc.)
-
-* Deployment instructions
-
-* ...
+# Update Docker Hub image
+$ docker login
+$ docker push shoppu/shoppu
+```
