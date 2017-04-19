@@ -8,7 +8,6 @@
     "url": "git+https://github.com/twmulloy/shoppu.git"
   },
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1",
-    "start": "rails s"
+    "test": "echo \"Error: no test specified\" && exit 1"
   }
 }

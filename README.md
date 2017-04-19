@@ -24,13 +24,13 @@ Each time you pull, the following will likely need to be done.
 $ docker-compose build
 
 # Bundler
-$ docker-compose run web bundle
+$ docker-compose run --rm web bundle
 
 # Npm
-$ docker-compose run web npm i
+$ docker-compose run --rm web npm i
 
 # Migrate
-$ docker-compose run web rails db:migrate
+$ docker-compose run --rm web rails db:migrate
 
 # Run
 $ docker-compose up

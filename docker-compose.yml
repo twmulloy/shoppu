@@ -6,15 +6,11 @@ services:
       - postgres:/var/lib/postgresql/data
   web:
     build: .
-    command: >
-      bash -c "
-      rm -f tmp/pids/server.pid
-      && rails tmp:cache:clear
-      & npm start -- -p 3000 -b '0.0.0.0'
-      "
+    command: rails s -p 3000 -b '0.0.0.0'
     volumes:
       - .:/web
       - node_modules:/web/node_modules
+      - ruby_gems:/usr/local/bundle
     ports:
       - '3000:3000'
     links:
@@ -22,11 +18,13 @@ services:
     depends_on:
       - db
     environment:
-      VIRTUAL_HOST: .shoppu.*
+      VIRTUAL_HOST: .shoppu.dev
       DATABASE_USERNAME: postgres
       DATABASE_HOST: db
 volumes:
   postgres:
     driver: local
   node_modules:
+    driver: local
+  ruby_gems:
     driver: local
