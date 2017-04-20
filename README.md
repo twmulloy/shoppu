@@ -46,3 +46,11 @@ $ docker build -t shoppu/shoppu .
 $ docker login
 $ docker push shoppu/shoppu
 ```
+
+#### SSL
+`~/.dinghy/certs`
+```
+openssl req -x509 -newkey rsa:2048 -keyout shoppu.dev.key \
+-out shoppu.dev.crt -days 365 -nodes \
+-subj "/C=US/ST=Washington/L=Seattle/O=Shoppu/OU=Development/CN=*.shoppu.dev"
+```

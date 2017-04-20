@@ -10,7 +10,7 @@ services:
     volumes:
       - .:/web
       - node_modules:/web/node_modules
-      - ruby_gems:/usr/local/bundle
+      - rubygems:/usr/local/bundle
     ports:
       - '3000:3000'
     links:
@@ -26,5 +26,5 @@ volumes:
     driver: local
   node_modules:
     driver: local
-  ruby_gems:
+  rubygems:
     driver: local
