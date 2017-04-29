@@ -1,9 +1,11 @@
 Rails.application.routes.draw do
-  root 'alchemy/pages#index'
-
-  mount Spree::Core::Engine, at: '/'
+  constraints subdomain: 'store' do
+    mount Spree::Core::Engine, at: '/'
+  end
 
   devise_scope :spree_user do
+    get '/login', to: 'spree/user_sessions#new'
+    post '/login', to: 'spree/user_sessions#create'
     delete '/logout', to: 'spree/user_sessions#destroy'
   end
 
