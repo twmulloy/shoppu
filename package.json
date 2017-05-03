@@ -3,25 +3,26 @@
   "version": "0.1.0",
   "author": "Thomas Mulloy",
   "private": true,
-  "repository": {
-    "type": "git",
-    "url": "git+https://github.com/twmulloy/shoppu.git"
-  },
+  "repository": "git+https://github.com/twmulloy/shoppu.git",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "dependencies": {
+    "@angular/animations": "^4.1.0",
     "@angular/common": "^4.1.0",
     "@angular/compiler": "^4.1.0",
+    "@angular/compiler-cli": "^4.1.0",
     "@angular/core": "^4.1.0",
+    "@angular/forms": "^4.1.0",
+    "@angular/http": "^4.1.0",
     "@angular/platform-browser": "^4.1.0",
     "@angular/platform-browser-dynamic": "^4.1.0",
+    "@angular/platform-server": "^4.1.0",
+    "@angular/router": "^4.1.0",
     "autoprefixer": "^6.7.7",
     "babel-core": "^6.24.1",
     "babel-loader": "7.x",
     "babel-preset-env": "^1.4.0",
-    "coffee-loader": "^0.7.3",
-    "coffee-script": "^1.12.5",
     "compression-webpack-plugin": "^0.4.0",
     "core-js": "^2.4.1",
     "css-loader": "^0.28.0",
