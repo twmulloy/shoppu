@@ -20,8 +20,8 @@ gem 'spree_core', '~> 3.2.0.rc3'
 gem 'spree_frontend', '~> 3.2.0.rc3'
 gem 'spree_auth_devise', '~> 3.2.0.beta'
 gem 'spree_gateway', '~> 3.2.0.beta'
-
 gem 'alchemy_cms', github: 'AlchemyCMS/alchemy_cms', branch: 'rails-5'
+gem 'webpacker', github: 'rails/webpacker'
 
 group :development, :test do
   gem 'byebug', platform: :mri

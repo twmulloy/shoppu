@@ -17,7 +17,6 @@
 .byebug_history
 
 .env
-node_modules/
-npm-debug.log*
 
-*.bundle.*
+/public/packs
+/node_modules
