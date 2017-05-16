@@ -1,0 +1,19 @@
+AllCops:
+  TargetRubyVersion: 2.3
+AllCops:
+  Exclude:
+    - db/schema.rb
+    - db/migrate/*.rb
+    - node_modules/**/*
+Style/FrozenStringLiteralComment:
+  Enabled: false
+Style/Documentation:
+  Enabled: false
+Bundler/OrderedGems:
+  Enabled: false
+Style/AlignParameters:
+  Enabled: false
+Metrics/LineLength:
+  Exclude:
+    - config/initializers/devise.rb
+inherit_from: .rubocop_todo.yml

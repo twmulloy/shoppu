@@ -1,11 +1,11 @@
 Spree::User.class_eval do
   def alchemy_roles
     if has_spree_role?(:admin)
-      %w(admin)
+      %w[admin]
     elsif has_spree_role?(:user)
-      %w(member)
+      %w[member]
     else
-      %w()
+      %w[]
     end
   end
 
