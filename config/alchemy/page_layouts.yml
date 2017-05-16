@@ -9,11 +9,6 @@
     - article
   autogenerate: []
 
-- name: pages
-  elements:
-    - article
-  autogenerate: []
-
 - name: page
   elements:
     - article

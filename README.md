@@ -1,24 +1,51 @@
 # ショップ 「shoppu」
 ## Development
 ### Dependencies
-#### OSX
+#### MacOS
 * [Homebrew](https://github.com/Homebrew/brew)
 * [VirtualBox](https://www.virtualbox.org/wiki/Downloads)
 * [Dinghy](https://github.com/codekitchen/dinghy)
 * [Docker Compose](https://docs.docker.com/compose)
+
 ### Setup
 One time setup steps.
+
 #### Files
 Create `.env` for sensitive environment variables that should not be committed.
 ```
 $ touch .env
 ```
 #### Database
+##### MacOS
+```
+$ gem install bundler
+
+$ rails db:setup
+```
+
+##### Docker
 ```
 $ docker-compose run web rails db:setup
 ```
 ### Work
 Each time you pull, the following will likely need to be done.
+
+#### MacOS
+```
+# Bundler
+$ bundle
+
+# Npm
+$ npm i
+
+# Migrate
+$ rails db:migrate
+
+# Run
+$ npm start
+```
+
+#### Docker
 ```
 # Build
 $ docker-compose build
@@ -35,6 +62,7 @@ $ docker-compose run --rm web rails db:migrate
 # Run
 $ docker-compose up
 ```
+
 ### Docker
 `./Dockerfile`, `./docker-compose.yml`
 
