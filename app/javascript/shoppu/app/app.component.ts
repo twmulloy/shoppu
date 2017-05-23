@@ -2,8 +2,10 @@ import { Component } from '@angular/core';
 
 @Component({
   selector: 'shoppu',
-  template: `<h1>{{name}}</h1>`
+  template: `
+    <page></page>
+  `
 })
 export class AppComponent {
-  name = 'Shoppu';
+
 }
