@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core'
+import { ActivatedRoute, Params } from '@angular/router'
 
 import { SiteService } from './site.service'
 import { Site } from './site'
@@ -6,7 +7,6 @@ import { Site } from './site'
 @Component({
   selector: 'site',
   template: `
-    <h1>Shoppu</h1>
     <p class="error" *ngIf="errorMessage">{{errorMessage}}</p>
     <page></page>
   `,
@@ -16,9 +16,15 @@ export class SiteComponent implements OnInit {
   errorMessage: string
   site: Site
 
-  constructor(private siteService: SiteService) {}
+  constructor(
+    private siteService: SiteService,
+    private route: ActivatedRoute
+  ) {}
 
-  ngOnInit() { this.getSite() }
+  ngOnInit() {
+    console.log(this.route)
+    this.getSite()
+  }
 
   getSite() {
     this.siteService.getSite().subscribe(
