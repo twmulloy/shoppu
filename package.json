@@ -6,8 +6,9 @@
   "repository": "git+https://github.com/twmulloy/shoppu.git",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "webpacker": "./bin/webpack-dev-server",
-    "start": "rails s & npm run webpacker"
+    "webpacker": "bin/webpack-dev-server",
+    "clear": "rm -f tmp/pids/server.pid && rails tmp:cache:clear",
+    "start": "npm run clear && rails s & npm run webpacker"
   },
   "dependencies": {
     "@angular/common": "^4.1.0",

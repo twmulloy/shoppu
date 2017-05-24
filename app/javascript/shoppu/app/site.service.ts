@@ -4,30 +4,28 @@ import { Observable } from 'rxjs/Observable'
 import 'rxjs/add/operator/catch'
 import 'rxjs/add/operator/map'
 
-import { Page } from './page'
+import { Site } from './site'
 
 @Injectable()
-export class PageService {
-  private baseUrl = 'api/pages'
+export class SiteService {
+  private siteUrl = 'api/pages/nested'
 
   constructor (private http: Http) {}
 
-  getPage(pageUrl: string): Observable<Page> {
-    const url = [this.baseUrl, pageUrl].join('/')
-
-    return this.http.get(url)
+  getSite(): Observable<Site> {
+    return this.http.get(this.siteUrl)
       .map(this.extractData)
       .catch(this.handleError)
   }
 
   private extractData(res: Response) {
     let body = res.json()
-    return body || {}
+    return body.pages[0] || {}
   }
 
   private handleError (error: Response | any) {
     // In a real world app, you might use a remote logging infrastructure
-    let errMsg: string;
+    let errMsg: string
     if (error instanceof Response) {
       const body = error.json() || ''
       const err = body.error || JSON.stringify(body)

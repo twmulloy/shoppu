@@ -1,28 +1,37 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit } from '@angular/core'
 
-import { PageService } from './page.service';
-import { Page } from './page';
+import { PageService } from './page.service'
+import { Page } from './page'
 
 @Component({
   selector: 'page',
   template: `
-    <h1>Page</h1>
+    <h2>{{page?.name}}</h2>
     <p class="error" *ngIf="errorMessage">{{errorMessage}}</p>
+    <div *ngFor="let element of page?.elements">
+      <div *ngFor="let ingredient of element.ingredients">
+        <div [ngSwitch]="ingredient.name">
+          <div *ngSwitchCase="'text'">
+            <div [innerHTML]="ingredient.value"></div>
+          </div>
+        </div>
+      </div>
+    </div>
   `,
   providers: [ PageService ]
 })
 export class PageComponent implements OnInit {
-  errorMessage: string;
-  pages: Page[];
+  errorMessage: string
+  page: Page
 
   constructor(private pageService: PageService) {}
 
-  ngOnInit() { this.getPages(); }
+  ngOnInit() { this.getPage() }
 
-  getPages() {
-    this.pageService.getPages().subscribe(
-      pages => this.pages = pages,
+  getPage() {
+    this.pageService.getPage('index').subscribe(
+      page => this.page = page,
       error => this.errorMessage = <any>error
-    );
+    )
   }
 }
