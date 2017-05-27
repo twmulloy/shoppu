@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core'
+import { ActivatedRoute } from '@angular/router'
 
 import { PageService } from './page.service'
 import { Page } from './page'
@@ -21,17 +22,22 @@ import { Page } from './page'
   providers: [ PageService ]
 })
 export class PageComponent implements OnInit {
-  errorMessage: string
   page: Page
 
-  constructor(private pageService: PageService) {}
+  constructor(
+    private pageService: PageService,
+    private route: ActivatedRoute
+  ) {}
 
-  ngOnInit() { this.getPage() }
+  ngOnInit() {
+    this.route.url.subscribe(segments => {
+      this.getPage(segments)
+    })
+  }
 
-  getPage() {
-    this.pageService.getPage('index').subscribe(
-      page => this.page = page,
-      error => this.errorMessage = <any>error
+  getPage(path) {
+    this.pageService.getPage(path).subscribe(
+      page => this.page = page
     )
   }
 }
