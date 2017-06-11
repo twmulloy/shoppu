@@ -1,8 +1,5 @@
-export class Site {
-  constructor(
-    public id: number,
-    public name: string
-  ) {
+import { Page } from './page'
 
-  }
+export interface Site {
+  pages: Array<Page>
 }

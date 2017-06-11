@@ -17,7 +17,6 @@ export class SiteService {
   }
 
   private extractData(res: Response) {
-    let body = res.json()
-    return body.pages[0] || {}
+    return res.json()
   }
 }

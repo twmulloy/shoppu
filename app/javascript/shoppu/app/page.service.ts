@@ -7,19 +7,31 @@ import { Page } from './page'
 
 @Injectable()
 export class PageService {
-  private baseUrl = 'api/pages'
+  private baseUrl = 'api'
 
   constructor (private http: Http) {}
 
-  getPage(segments: Array<any>): Observable<Page> {
-    const path = segments.map(segment => segment.path).join('/')
-    const url = [this.baseUrl, path].join('/')
-    return this.http.get(url)
-      .map(this.extractData)
+  getPage(segments: Array<any>, root?: Page): Observable<Page> {
+    const isAdminRoute: boolean = !!segments.find(segment => segment.path === 'admin')
+    let path: string = segments.map(segment => segment.path).join('/')
+    let url = [ this.baseUrl ]
+
+    if (!isAdminRoute) { url.push('pages') }
+
+    if (path) {
+      url.push(path)
+    } else {
+      if (root && root.urlname) {
+        url.push(root.urlname)
+      }
+    }
+
+    path = url.join('/')
+
+    return this.http.get(path).map(this.extractData)
   }
 
   private extractData(res: Response) {
-    let body = res.json()
-    return body || {}
+    return res.json()
   }
 }

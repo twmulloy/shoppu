@@ -1,5 +1,7 @@
-import { Component, OnInit } from '@angular/core'
+import { Component, Input, OnChanges, SimpleChanges } from '@angular/core'
 import { ActivatedRoute } from '@angular/router'
+
+import { Site } from './site'
 
 import { PageService } from './page.service'
 import { Page } from './page'
@@ -8,9 +10,8 @@ import { Page } from './page'
   selector: 'page',
   template: `
     <h2>{{page?.name}}</h2>
-    <p class="error" *ngIf="errorMessage">{{errorMessage}}</p>
     <div *ngFor="let element of page?.elements">
-      <div *ngFor="let ingredient of element.ingredients">
+      <div *ngFor="let ingredient of element?.ingredients">
         <div [ngSwitch]="ingredient.name">
           <div *ngSwitchCase="'text'">
             <div [innerHTML]="ingredient.value"></div>
@@ -21,7 +22,8 @@ import { Page } from './page'
   `,
   providers: [ PageService ]
 })
-export class PageComponent implements OnInit {
+export class PageComponent implements OnChanges {
+  @Input() site: Site
   page: Page
 
   constructor(
@@ -29,15 +31,22 @@ export class PageComponent implements OnInit {
     private route: ActivatedRoute
   ) {}
 
-  ngOnInit() {
-    this.route.url.subscribe(segments => {
-      this.getPage(segments)
-    })
+  ngOnChanges(changes: SimpleChanges) {
+    if (changes.site.currentValue) {
+      this.route.url.subscribe(segments => {
+        this.getPage(segments)
+      })
+    }
   }
 
-  getPage(path) {
-    this.pageService.getPage(path).subscribe(
-      page => this.page = page
-    )
+  getPage(segments: Array<any>) {
+    const isRoot: boolean = segments.length === 0
+    let root: Page
+
+    if (isRoot) {
+      root = this.site.pages.find(page => page.root)
+    }
+
+    this.pageService.getPage(segments, root).subscribe(page => this.page = page)
   }
 }

@@ -6,23 +6,19 @@ import { Site } from './site'
 @Component({
   selector: 'site',
   template: `
-    <page></page>
+    <page [site]="site"></page>
   `
 })
 export class SiteComponent implements OnInit {
   site: Site
 
-  constructor(
-    private siteService: SiteService
-  ) {}
+  constructor(private siteService: SiteService) {}
 
   ngOnInit() {
     this.getSite()
   }
 
   getSite() {
-    this.siteService.getSite().subscribe(
-      site => this.site = site
-    )
+    this.siteService.getSite().subscribe(site => this.site = site)
   }
 }
