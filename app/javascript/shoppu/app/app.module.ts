@@ -7,6 +7,8 @@ import { RouterModule, Routes } from '@angular/router'
 import { AppComponent } from './app.component'
 import { SiteComponent } from './site.component'
 import { PageComponent } from './page.component'
+import { ElementComponent } from './element.component'
+import { IngredientComponent } from './ingredient.component'
 
 // Services
 import { SiteService } from './site.service'
@@ -19,7 +21,9 @@ const appRoutes: Routes = [
   declarations: [
     AppComponent,
     SiteComponent,
-    PageComponent
+    PageComponent,
+    ElementComponent,
+    IngredientComponent
   ],
   imports: [
     BrowserModule,
