@@ -12,17 +12,23 @@
 - name: page
   elements:
     - article
-  autogenerate: []
+    - taxon
+  autogenerate:
+    - article
 
 - name: products
   elements:
-    - article
-  autogenerate: []
+    - taxon
+    - product
+  autogenerate:
+    - taxon
 
 - name: product
   elements:
-    - article
-  autogenerate: []
+    - taxon
+    - product
+  autogenerate:
+    - product
 
 - name: external
   redirects_to_external: true

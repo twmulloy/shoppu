@@ -12,6 +12,12 @@ import { Ingredient } from './ingredient'
       <div *ngSwitchCase="'text'">
         <div [innerHTML]="ingredient.value"></div>
       </div>
+      <div *ngSwitchCase="'spree_product'">
+        <pre>{{ingredient.value | json}}</pre>
+      </div>
+      <div *ngSwitchCase="'spree_taxon'">
+        <pre>{{ingredient.value | json}}</pre>
+      </div>
     </div>
   `
 })

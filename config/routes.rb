@@ -14,7 +14,7 @@ Rails.application.routes.draw do
     get '/confirm', to: 'spree/user_confirmations#show' if Spree::Auth::Config[:confirmable]
   end
 
-  constraints subdomain: 'store' do
+  constraints subdomain: 'shop' do
     mount Spree::Core::Engine, at: '/'
   end
 

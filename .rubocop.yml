@@ -5,15 +5,15 @@ AllCops:
     - db/schema.rb
     - db/migrate/*.rb
     - node_modules/**/*
-Style/FrozenStringLiteralComment:
-  Enabled: false
-Style/Documentation:
-  Enabled: false
 Bundler/OrderedGems:
   Enabled: false
-Style/AlignParameters:
+Layout/AlignParameters:
   Enabled: false
 Metrics/LineLength:
   Exclude:
     - config/initializers/devise.rb
+Style/FrozenStringLiteralComment:
+  Enabled: false
+Style/Documentation:
+  Enabled: false
 inherit_from: .rubocop_todo.yml

@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20170301041872) do
+ActiveRecord::Schema.define(version: 20170614031041) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -160,6 +160,18 @@ ActiveRecord::Schema.define(version: 20170301041872) do
     t.integer  "creator_id"
     t.integer  "updater_id"
     t.index ["value"], name: "index_alchemy_essence_selects_on_value", using: :btree
+  end
+
+  create_table "alchemy_essence_spree_products", force: :cascade do |t|
+    t.integer "spree_product_id"
+    t.index ["spree_product_id"], name: "index_alchemy_essence_spree_products_on_spree_product_id", using: :btree
+  end
+
+  create_table "alchemy_essence_spree_taxons", force: :cascade do |t|
+    t.integer  "taxon_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["taxon_id"], name: "index_alchemy_essence_spree_taxons_on_taxon_id", using: :btree
   end
 
   create_table "alchemy_essence_texts", force: :cascade do |t|

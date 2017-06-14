@@ -17,3 +17,17 @@
     type: EssenceRichtext
     default: :article_text
     hint: true
+
+# Spree elements
+- name: product
+  hint: true
+  unique: true
+  contents:
+  - name: spree_product
+    type: EssenceSpreeProduct
+
+- name: taxon
+  hint: true
+  contents:
+  - name: spree_taxon
+    type: EssenceSpreeTaxon
