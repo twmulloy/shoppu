@@ -5,5 +5,8 @@ export interface Page {
   name: string,
   urlname: string,
   elements?: Array<Element>,
-  root?: boolean
+  root?: boolean,
+  public?: boolean,
+  visible?: boolean,
+  children?: Array<Page>
 }

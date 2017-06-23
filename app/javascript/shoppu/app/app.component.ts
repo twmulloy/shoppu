@@ -1,7 +1,7 @@
 import { Component } from '@angular/core'
 
 @Component({
-  selector: 'shoppu',
+  selector: '[shoppu]',
   template: `
     <router-outlet></router-outlet>
   `

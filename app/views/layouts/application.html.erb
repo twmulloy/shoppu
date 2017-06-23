@@ -5,13 +5,11 @@
 <%= csrf_meta_tags %>
 <%= render 'alchemy/pages/meta_data' %>
 <%= stylesheet_link_tag 'application', media: 'all' %>
-<%#= javascript_include_tag 'application' %>
 <%= javascript_pack_tag 'application' %>
 </head>
 <body>
-<shoppu>Loading...</shoppu>
+<div shoppu>Loading...</div>
 <%= javascript_pack_tag 'shoppu' %>
-<%#= yield %>
 <%= render 'alchemy/edit_mode' %>
 </body>
 </html>

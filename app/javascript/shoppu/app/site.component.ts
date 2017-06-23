@@ -6,12 +6,7 @@ import { Site } from './site'
 @Component({
   selector: 'site',
   template: `
-    <h1><a routerLink="/">Shoppu</a></h1>
-    <nav>
-      <a routerLink="/products">Products</a>
-      <a [routerLink]="['/products', 'sega-genesis']">Sega Genesis</a>
-    </nav>
-    <page [site]="site"></page>
+    <div page [site]="site"></div>
   `
 })
 export class SiteComponent implements OnInit {

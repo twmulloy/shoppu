@@ -3,11 +3,11 @@ import { Component, Input } from '@angular/core'
 import { Element } from './element'
 
 @Component({
-  selector: 'element',
+  selector: '[element]',
   template: `
-    <div *ngFor="let ingredient of element?.ingredients">
-      <ingredient [ingredient]="ingredient"></ingredient>
-    </div>
+    <ng-container *ngFor="let ingredient of element?.ingredients">
+      <div ingredient [ingredient]="ingredient"></div>
+    </ng-container>
   `
 })
 export class ElementComponent {

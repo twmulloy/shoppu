@@ -7,11 +7,36 @@ import { PageService } from './page.service'
 import { Page } from './page'
 
 @Component({
-  selector: 'page',
+  selector: '[page]',
   template: `
-    <div *ngFor="let element of page?.elements">
-      <element [element]="element"></element>
-    </div>
+    <header>
+      <ng-container *ngFor="let root of site?.pages">
+        <ng-container *ngIf="root.root && root.public && root.visible">
+          <h1><a routerLink="/{{root.urlname === 'index' ? '' : root.urlname}}">{{root.name}}</a></h1>
+          <nav>
+            <ng-template #nav let-pages>
+              <ol>
+                <ng-container *ngFor="let page of pages">
+                  <ng-container *ngIf="page.public && page.visible">
+                    <li>
+                      <a routerLink="/{{page.urlname}}">{{page.name}}</a>
+                      <ng-container *ngTemplateOutlet="nav; context:{ $implicit: page.children }"></ng-container>
+                    </li>
+                  </ng-container>
+                </ng-container>
+              </ol>
+            </ng-template>
+            <ng-container *ngTemplateOutlet="nav; context:{ $implicit: root.children }"></ng-container>
+          </nav>
+        </ng-container>
+      </ng-container>
+    </header>
+
+    <main>
+      <section element *ngFor="let element of page?.elements" [element]="element"></section>
+    </main>
+
+    <footer></footer>
   `,
   providers: [ PageService ]
 })
