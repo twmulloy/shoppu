@@ -7,7 +7,7 @@ git_source(:github) do |repo_name|
   "https://github.com/#{repo_name}.git"
 end
 
-gem 'rails', '~> 5.0.3'
+gem 'rails', '~> 5.0.4'
 gem 'pg', '~> 0.18'
 gem 'puma', '~> 3.0'
 gem 'sass-rails', '~> 5.0'
@@ -20,10 +20,11 @@ gem 'spree_backend', '~> 3.2.1'
 gem 'spree_core', '~> 3.2.1'
 gem 'spree_frontend', '~> 3.2.1'
 gem 'spree_sample', '~> 3.2.1' # TODO: Remove
-gem 'spree_auth_devise', '~> 3.2.0.beta'
-gem 'spree_gateway', '~> 3.2.0.beta'
+gem 'spree_auth_devise', '~> 3.2.0'
+gem 'spree_gateway', '~> 3.2.0'
 gem 'alchemy_cms', github: 'AlchemyCMS/alchemy_cms', branch: 'rails-5'
 gem 'webpacker', github: 'rails/webpacker'
+gem 'js-routes', '~> 1.3.3'
 
 group :development, :test do
   gem 'byebug', platform: :mri
