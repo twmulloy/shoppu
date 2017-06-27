@@ -38,7 +38,7 @@ import { Page } from './page'
 
     <footer></footer>
   `,
-  providers: [ PageService ]
+  providers: [PageService]
 })
 export class PageComponent implements OnChanges {
   @Input() site: Site
@@ -49,7 +49,7 @@ export class PageComponent implements OnChanges {
     private route: ActivatedRoute
   ) {}
 
-  ngOnChanges(changes: SimpleChanges) {
+  ngOnChanges(changes: SimpleChanges): void {
     if (changes.site.currentValue) {
       this.route.url.subscribe(segments => {
         this.getPage(segments)
@@ -57,7 +57,7 @@ export class PageComponent implements OnChanges {
     }
   }
 
-  getPage(segments: Array<any>) {
+  getPage(segments: Array<any>): void {
     const isRoot: boolean = segments.length === 0
     let root: Page
 

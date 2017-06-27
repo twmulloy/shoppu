@@ -1,5 +1,7 @@
 import { Component, OnInit } from '@angular/core'
 
+import { EnvService } from './env.service'
+import { Env } from './env'
 import { SiteService } from './site.service'
 import { Site } from './site'
 
@@ -10,15 +12,24 @@ import { Site } from './site'
   `
 })
 export class SiteComponent implements OnInit {
+  env: Env
   site: Site
 
-  constructor(private siteService: SiteService) {}
+  constructor(
+    private envService: EnvService,
+    private siteService: SiteService
+  ) {}
 
-  ngOnInit() {
+  ngOnInit(): void {
+    this.getEnv()
     this.getSite()
   }
 
-  getSite() {
+  getEnv(): Env {
+    return this.env = this.envService.getEnv()
+  }
+
+  getSite(): void {
     this.siteService.getSite().subscribe(site => this.site = site)
   }
 }

@@ -11,6 +11,7 @@ import { ElementComponent } from './element.component'
 import { IngredientComponent } from './ingredient.component'
 
 // Services
+import { EnvService } from './env.service'
 import { SiteService } from './site.service'
 
 const appRoutes: Routes = [
@@ -31,6 +32,8 @@ const appRoutes: Routes = [
     RouterModule.forRoot(appRoutes)
   ],
   providers: [
+    { provide: Window, useValue: window },
+    EnvService,
     SiteService
   ],
   bootstrap: [
