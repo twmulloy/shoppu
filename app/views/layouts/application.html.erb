@@ -5,6 +5,7 @@
 <%= csrf_meta_tags %>
 <%= render 'alchemy/pages/meta_data' %>
 <%= stylesheet_link_tag 'application', media: 'all' %>
+<%= include_gon namespace: 'env' %>
 <%= javascript_include_tag 'application' %>
 <%= javascript_pack_tag 'application' %>
 </head>

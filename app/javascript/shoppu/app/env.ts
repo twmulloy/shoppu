@@ -1,3 +1,8 @@
 export interface Env {
-  routes: object
+  base_url: object,
+  domain: string,
+  environment: string,
+  keychain: object,
+  meta: object,
+  routes: object,
 }

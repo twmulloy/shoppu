@@ -9,6 +9,7 @@ import { SiteComponent } from './site.component'
 import { PageComponent } from './page.component'
 import { ElementComponent } from './element.component'
 import { IngredientComponent } from './ingredient.component'
+import { ProductComponent } from './product.component'
 
 // Services
 import { EnvService } from './env.service'
@@ -24,7 +25,8 @@ const appRoutes: Routes = [
     SiteComponent,
     PageComponent,
     ElementComponent,
-    IngredientComponent
+    IngredientComponent,
+    ProductComponent
   ],
   imports: [
     BrowserModule,

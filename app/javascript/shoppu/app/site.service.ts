@@ -11,22 +11,21 @@ import { Site } from './site'
 @Injectable()
 export class SiteService {
   private env: Env
-  private siteUrl: string
 
   constructor(
     @Inject(EnvService) private envService,
     private http: Http
   ) {
     this.env = this.getEnv()
-    this.siteUrl = this.env.routes['alchemy_api_page_path']('nested')
+  }
+
+  getSite(): Observable<Site> {
+    const url = this.env.routes['alchemy_api_page_path']('nested')
+    return this.http.get(url).map(this.extractData)
   }
 
   private getEnv(): Env {
     return this.envService.getEnv()
-  }
-
-  getSite(): Observable<Site> {
-    return this.http.get(this.siteUrl).map(this.extractData)
   }
 
   private extractData(res: Response) {

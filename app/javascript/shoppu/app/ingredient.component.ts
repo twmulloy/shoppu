@@ -13,7 +13,7 @@ import { Ingredient } from './ingredient'
         <div [innerHTML]="ingredient.value"></div>
       </ng-container>
       <ng-container *ngSwitchCase="'spree_product'">
-        <pre>{{ingredient.value | json}}</pre>
+        <div product [item]="ingredient.value"></div>
       </ng-container>
       <ng-container *ngSwitchCase="'spree_taxon'">
         <pre>{{ingredient.value | json}}</pre>

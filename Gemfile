@@ -25,6 +25,8 @@ gem 'spree_gateway', '~> 3.2.0'
 gem 'alchemy_cms', github: 'AlchemyCMS/alchemy_cms', branch: 'rails-5'
 gem 'webpacker', github: 'rails/webpacker'
 gem 'js-routes', '~> 1.3.3'
+gem 'gon', '~> 6.1.0'
+gem 'rack-cors', '~> 0.4.1', require: 'rack/cors'
 
 group :development, :test do
   gem 'byebug', platform: :mri
