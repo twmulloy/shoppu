@@ -16,6 +16,7 @@ import { EnvService } from './env.service'
 import { SiteService } from './site.service'
 
 const appRoutes: Routes = [
+  { path: 'index', redirectTo: '' },
   { path: '**', component: SiteComponent }
 ]
 

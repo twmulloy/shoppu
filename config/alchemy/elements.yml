@@ -4,7 +4,6 @@
 
 - name: article
   hint: true
-  unique: true
   contents:
   - name: headline
     type: EssenceText

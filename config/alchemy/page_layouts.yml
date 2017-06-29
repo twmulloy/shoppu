@@ -4,10 +4,10 @@
 
 # Pages
 - name: index
-  unique: true
   elements:
     - article
-  autogenerate: []
+  cells:
+    - header
 
 - name: page
   elements:
@@ -29,19 +29,3 @@
     - product
   autogenerate:
     - product
-
-- name: external
-  redirects_to_external: true
-
-# Global Pages
-- name: header
-  unique: true
-  elements: []
-  autogenerate: []
-  layoutpage: true
-
-- name: footer
-  unique: true
-  elements: []
-  autogenerate: []
-  layoutpage: true
