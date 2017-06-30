@@ -9,12 +9,20 @@
 - name: page
   elements:
     - article
-    - taxon
   autogenerate:
     - article
 
-- name: products
+- name: taxonomy
   elements:
+    - taxonomy
+    - taxon
+    - product
+  autogenerate:
+    - taxonomy
+
+- name: taxon
+  elements:
+    - taxonomy
     - taxon
     - product
   autogenerate:
@@ -22,6 +30,7 @@
 
 - name: product
   elements:
+    - taxonomy
     - taxon
     - product
   autogenerate:

@@ -15,17 +15,23 @@ Create `.env` for sensitive environment variables that should not be committed.
 ```
 $ touch .env
 ```
+
+```
+# .env
+SPREE_API_TOKEN=
+```
 #### Database
 ##### MacOS
 ```
 $ gem install bundler
+$ gem install foreman
 
 $ rails db:setup
 ```
 
 ##### Docker
 ```
-$ docker-compose run web rails db:setup
+$ docker-compose run --rm web rails db:setup
 ```
 ### Work
 Each time you pull, the following will likely need to be done.

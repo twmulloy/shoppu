@@ -26,11 +26,11 @@ export class PageService {
 
     if (this.isAdminRoute(segments)) {
       pageId = segments.pop().path
-      url = this.env.routes['alchemy_api_preview_page_path'](pageId)
+      url = this.env.routes.alchemy_api_preview_page_path(pageId)
     } else if (path) {
-      url = this.env.routes['alchemy_api_page_path'](path)
+      url = this.env.routes.alchemy_api_page_path(path)
     } else if (root && root.urlname) {
-      url = this.env.routes['alchemy_api_page_path'](root.urlname)
+      url = this.env.routes.alchemy_api_page_path(root.urlname)
     }
 
     return this.http.get(url).map(this.extractData)

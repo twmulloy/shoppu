@@ -9,6 +9,8 @@ import { SiteComponent } from './site.component'
 import { PageComponent } from './page.component'
 import { ElementComponent } from './element.component'
 import { IngredientComponent } from './ingredient.component'
+import { TaxonomyComponent } from './taxonomy.component'
+import { TaxonComponent } from './taxon.component'
 import { ProductComponent } from './product.component'
 
 // Services
@@ -27,6 +29,8 @@ const appRoutes: Routes = [
     PageComponent,
     ElementComponent,
     IngredientComponent,
+    TaxonomyComponent,
+    TaxonComponent,
     ProductComponent
   ],
   imports: [

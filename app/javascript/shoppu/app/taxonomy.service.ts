@@ -11,10 +11,10 @@ import 'rxjs/add/operator/map'
 import { EnvService } from './env.service'
 import { Env } from './env'
 
-import { Product } from './product'
+import { Taxonomy } from './taxonomy'
 
 @Injectable()
-export class ProductService {
+export class TaxonomyService {
   private env: Env
 
   constructor(
@@ -28,10 +28,10 @@ export class ProductService {
     return this.envService.getEnv()
   }
 
-  getProduct(id: number): Observable<Product> {
+  getTaxonomy(id: number): Observable<Taxonomy> {
     const url = [
       this.env.spree.root_url,
-      this.env.routes.spree_api_v1_product_path(id)
+      this.env.routes.spree_api_v1_taxonomy_path(id)
     ].join('')
     const options: RequestOptionsArgs = {
       headers: new Headers({

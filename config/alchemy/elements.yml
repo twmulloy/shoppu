@@ -16,15 +16,21 @@
     hint: true
 
 # Spree elements
-- name: product
+- name: taxonomy
   hint: true
-  unique: true
   contents:
-  - name: spree_product
-    type: EssenceSpreeProduct
+  - name: spree_taxonomy
+    type: EssenceSpreeTaxonomy
 
 - name: taxon
   hint: true
   contents:
   - name: spree_taxon
     type: EssenceSpreeTaxon
+
+- name: product
+  hint: true
+  unique: true
+  contents:
+  - name: spree_product
+    type: EssenceSpreeProduct

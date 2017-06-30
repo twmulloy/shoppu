@@ -12,11 +12,14 @@ import { Ingredient } from './ingredient'
       <ng-container *ngSwitchCase="'text'">
         <div [innerHTML]="ingredient.value"></div>
       </ng-container>
-      <ng-container *ngSwitchCase="'spree_product'">
-        <div product [item]="ingredient.value"></div>
+      <ng-container *ngSwitchCase="'spree_taxonomy'">
+        <div taxonomy [item]="ingredient.value"></div>
       </ng-container>
       <ng-container *ngSwitchCase="'spree_taxon'">
-        <pre>{{ingredient.value | json}}</pre>
+        <div taxon [item]="ingredient.value"></div>
+      </ng-container>
+      <ng-container *ngSwitchCase="'spree_product'">
+        <div product [item]="ingredient.value"></div>
       </ng-container>
     </ng-container>
   `

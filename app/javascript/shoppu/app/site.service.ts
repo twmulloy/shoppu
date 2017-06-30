@@ -20,7 +20,7 @@ export class SiteService {
   }
 
   getSite(): Observable<Site> {
-    const url = this.env.routes['alchemy_api_page_path']('nested')
+    const url = this.env.routes.alchemy_api_page_path('nested')
     return this.http.get(url).map(this.extractData)
   }
 

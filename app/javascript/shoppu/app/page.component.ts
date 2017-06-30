@@ -65,6 +65,7 @@ export class PageComponent implements OnChanges {
       root = this.site.pages.find(page => page.root)
     }
 
-    this.pageService.getPage(segments, root).subscribe(page => this.page = page)
+    this.pageService.getPage(segments, root)
+      .subscribe(page => this.page = page)
   }
 }

@@ -24,6 +24,7 @@ export class ProductComponent implements OnInit {
   }
 
   getProduct(): void {
-    this.productService.getProduct(this.item.id).subscribe(product => this.product = product)
+    this.productService.getProduct(this.item.id)
+      .subscribe(product => this.product = product)
   }
 }

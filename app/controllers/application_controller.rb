@@ -7,20 +7,23 @@ class ApplicationController < ActionController::Base
 
   def env
     gon.push(
-      environment: Rails.env,
-      domain: request.domain,
-      base_url: {
-        # TODO: Find better way to remove trailing slash
-        site: alchemy.root_url.chomp('/'),
-        shop: spree.root_url(subdomain: 'shop').chomp('/')
+      alchemy: {
+        root_url: alchemy.root_url.chomp('/')
       },
-      keychain: {
-        # TODO: Replace API key
-        shop: '219361d1957d53967e0414b9bf29219199fea2b98c54fee9'
-      },
-      meta: {
-        csrf_param: request_forgery_protection_token,
-        csrf_token: form_authenticity_token
+      # domain: request.domain,
+      # rails: {
+      #   environment: Rails.env,
+      #   key: {
+      #     param: request_forgery_protection_token,
+      #     token: form_authenticity_token
+      #   }
+      # },
+      spree: {
+        key: {
+          param: 'X-Spree-Token',
+          token: ENV['SPREE_API_TOKEN']
+        },
+        root_url: spree.root_url(subdomain: 'shop').chomp('/')
       }
     )
   end
