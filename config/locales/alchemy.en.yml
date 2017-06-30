@@ -4,10 +4,15 @@ en:
     # Translations for page layout names
     page_layout_names:
       index: Index
+      page: Page
+      products: Products
+      product: Product
 
     # Translations for element names
     element_names:
       article: Article
+      product: Product
+      taxon: Taxon
 
     # Translations for content names
     content_names:

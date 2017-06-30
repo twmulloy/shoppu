@@ -2,12 +2,9 @@
 #
 # For further information please see http://guides.alchemy-cms.com/stable/page_layouts.html
 
-# Pages
 - name: index
   elements:
     - article
-  cells:
-    - header
 
 - name: page
   elements:

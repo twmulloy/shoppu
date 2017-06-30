@@ -22,11 +22,12 @@ gem 'spree_frontend', '~> 3.2.1'
 gem 'spree_sample', '~> 3.2.1' # TODO: Remove
 gem 'spree_auth_devise', '~> 3.2.0'
 gem 'spree_gateway', '~> 3.2.0'
-gem 'alchemy_cms', github: 'AlchemyCMS/alchemy_cms', branch: 'rails-5'
-gem 'webpacker', github: 'rails/webpacker'
+gem 'alchemy_cms', github: 'AlchemyCMS/alchemy_cms', branch: 'master'
+gem 'webpacker', github: 'rails/webpacker', branch: 'master'
 gem 'js-routes', '~> 1.3.3'
 gem 'gon', '~> 6.1.0'
 gem 'rack-cors', '~> 0.4.1', require: 'rack/cors'
+gem 'rb-fsevent', '0.9.8'
 
 group :development, :test do
   gem 'byebug', platform: :mri

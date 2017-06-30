@@ -15,7 +15,7 @@ Dragonfly.app(:alchemy_pictures).configure do
   dragonfly_url nil
   plugin :imagemagick
   plugin :svg
-  secret '3318f03064915ea04174a059a34ac0bfa8433096147bb1f388929fbee0a2683f'
+  secret '6564bac536787456c329b09a94649e6c966dc0a6990b5031e244fd6d5254b5e2'
   url_format '/pictures/:job/:name.:ext'
 
   datastore :file,

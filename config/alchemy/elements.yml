@@ -7,14 +7,12 @@
   contents:
   - name: headline
     type: EssenceText
-    default: :article_headline
     hint: true
   - name: picture
     type: EssencePicture
     hint: true
   - name: text
     type: EssenceRichtext
-    default: :article_text
     hint: true
 
 # Spree elements
