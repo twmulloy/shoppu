@@ -3,10 +3,10 @@ import { Component, Input } from '@angular/core'
 import { Element } from './element'
 
 @Component({
-  selector: '[element]',
+  selector: 'element,[element]',
   template: `
     <ng-container *ngFor="let ingredient of element?.ingredients">
-      <div ingredient [ingredient]="ingredient"></div>
+      <ingredient [ingredient]="ingredient"></ingredient>
     </ng-container>
   `
 })

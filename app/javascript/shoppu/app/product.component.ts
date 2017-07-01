@@ -4,7 +4,7 @@ import { ProductService } from './product.service'
 import { Product } from './product'
 
 @Component({
-  selector: '[product]',
+  selector: 'product',
   template: `
     <pre>{{item | json}}</pre>
     <pre>{{product | json}}</pre>

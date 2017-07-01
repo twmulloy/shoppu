@@ -28,7 +28,7 @@ export class TaxonService {
     return this.envService.getEnv()
   }
 
-  getTaxon(id: number): Observable<Taxon> {
+  getTaxonProducts(id: number): Observable<Taxon> {
     const url = [
       this.env.spree.root_url,
       this.env.routes.spree_api_v1_taxon_products_path()

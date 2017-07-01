@@ -4,7 +4,7 @@ import { TaxonService } from './taxon.service'
 import { Taxon } from './taxon'
 
 @Component({
-  selector: '[taxon]',
+  selector: 'taxon',
   template: `
     <pre>{{item | json}}</pre>
     <pre>{{taxon | json}}</pre>
@@ -20,10 +20,11 @@ export class TaxonComponent implements OnInit {
   ) {}
 
   ngOnInit(): void {
-    this.getTaxon()
+    this.getTaxonProducts()
   }
 
-  getTaxon(): void {
-    this.taxonService.getTaxon(this.item.id).subscribe(taxon => this.taxon = taxon)
+  getTaxonProducts(): void {
+    this.taxonService.getTaxonProducts(this.item.id)
+      .subscribe(taxon => this.taxon = taxon)
   }
 }

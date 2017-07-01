@@ -4,9 +4,10 @@ export interface Page {
   id: number,
   name: string,
   urlname: string,
-  elements?: Array<Element>,
+  elements?: Element[],
   root?: boolean,
   public?: boolean,
   visible?: boolean,
-  children?: Array<Page>
+  children?: Page[],
+  title?: string
 }

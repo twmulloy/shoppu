@@ -2,7 +2,6 @@ import { NgModule } from '@angular/core'
 import { BrowserModule } from '@angular/platform-browser'
 import { HttpModule } from '@angular/http'
 import { RouterModule, Routes } from '@angular/router'
-
 // Components
 import { AppComponent } from './app.component'
 import { SiteComponent } from './site.component'
@@ -12,10 +11,11 @@ import { IngredientComponent } from './ingredient.component'
 import { TaxonomyComponent } from './taxonomy.component'
 import { TaxonComponent } from './taxon.component'
 import { ProductComponent } from './product.component'
-
+// Pipes
+import { ExtendedDataPipe } from './extended-data.pipe'
 // Services
 import { EnvService } from './env.service'
-import { SiteService } from './site.service'
+import { PageService } from './page.service'
 
 const appRoutes: Routes = [
   { path: 'index', redirectTo: '' },
@@ -31,7 +31,8 @@ const appRoutes: Routes = [
     IngredientComponent,
     TaxonomyComponent,
     TaxonComponent,
-    ProductComponent
+    ProductComponent,
+    ExtendedDataPipe
   ],
   imports: [
     BrowserModule,
@@ -41,7 +42,7 @@ const appRoutes: Routes = [
   providers: [
     { provide: Window, useValue: window },
     EnvService,
-    SiteService
+    PageService
   ],
   bootstrap: [
     AppComponent

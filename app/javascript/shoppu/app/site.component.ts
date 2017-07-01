@@ -2,27 +2,30 @@ import { Component, OnInit } from '@angular/core'
 
 import { EnvService } from './env.service'
 import { Env } from './env'
-import { SiteService } from './site.service'
-import { Site } from './site'
+
+import { PageService } from './page.service'
+import { Page } from './page'
 
 @Component({
   selector: 'site',
   template: `
-    <div page [site]="site"></div>
+    <page [site]="site" [pages]="pages"></page>
   `
 })
 export class SiteComponent implements OnInit {
   env: Env
-  site: Site
+  site: Page[]
+  pages: Page[]
 
   constructor(
     private envService: EnvService,
-    private siteService: SiteService
+    private siteService: PageService
   ) {}
 
   ngOnInit(): void {
     this.getEnv()
     this.getSite()
+    this.getPages()
   }
 
   getEnv(): Env {
@@ -30,6 +33,12 @@ export class SiteComponent implements OnInit {
   }
 
   getSite(): void {
-    this.siteService.getSite().subscribe(site => this.site = site)
+    this.siteService.getSite()
+      .subscribe(site => this.site = site)
+  }
+
+  getPages(): void {
+    this.siteService.getPages()
+      .subscribe(pages => this.pages = pages)
   }
 }

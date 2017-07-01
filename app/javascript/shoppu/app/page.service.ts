@@ -19,7 +19,17 @@ export class PageService {
     this.env = this.getEnv()
   }
 
-  getPage(segments: Array<any>, root?: Page): Observable<Page> {
+  getSite(): Observable<Page[]> {
+    const url = this.env.routes.alchemy_api_page_path('nested')
+    return this.http.get(url).map(this.extractWrappedData)
+  }
+
+  getPages(): Observable<Page[]> {
+    const url = this.env.routes.alchemy_api_pages_path()
+    return this.http.get(url).map(this.extractWrappedData)
+  }
+
+  getPage(segments: any[], root?: Page): Observable<Page> {
     let path: string = segments.map(segment => segment.path).join('/')
     let url: string
     let pageId: number | string
@@ -40,8 +50,12 @@ export class PageService {
     return this.envService.getEnv()
   }
 
-  private isAdminRoute(segments: Array<any>): boolean {
+  private isAdminRoute(segments: any[]): boolean {
     return !!segments.find(segment => segment.path === 'admin')
+  }
+
+  private extractWrappedData(res: Response) {
+    return res.json().pages as Page[]
   }
 
   private extractData(res: Response) {

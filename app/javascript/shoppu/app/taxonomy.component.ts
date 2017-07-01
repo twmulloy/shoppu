@@ -4,7 +4,7 @@ import { TaxonomyService } from './taxonomy.service'
 import { Taxonomy } from './taxonomy'
 
 @Component({
-  selector: '[taxonomy]',
+  selector: 'taxonomy',
   template: `
     <pre>{{item | json}}</pre>
     <pre>{{taxonomy | json}}</pre>
