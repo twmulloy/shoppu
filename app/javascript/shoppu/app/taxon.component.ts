@@ -9,18 +9,18 @@ import { Taxon } from './taxon'
     <header>
       <h1>{{item.name}}</h1>
     </header>
-    <main>
+    <section>
       <ol>
         <li *ngFor="let product of taxon?.products">
           <dl>
             <dt>Name:</dt>
-            <dd>{{product.name}}</dd>
+            <dd><a routerLink="">{{product.name}}</a></dd>
             <dt>Price:</dt>
             <dd>{{product.display_price}}</dd>
           </dl>
         </li>
       </ol>
-    </main>
+    </section>
   `,
   providers: [TaxonService]
 })
