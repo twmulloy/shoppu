@@ -4,10 +4,23 @@ import { TaxonService } from './taxon.service'
 import { Taxon } from './taxon'
 
 @Component({
-  selector: 'taxon',
+  selector: 'taxon,[taxon]',
   template: `
-    <pre>{{item | json}}</pre>
-    <pre>{{taxon | json}}</pre>
+    <header>
+      <h1>{{item.name}}</h1>
+    </header>
+    <main>
+      <ol>
+        <li *ngFor="let product of taxon?.products">
+          <dl>
+            <dt>Name:</dt>
+            <dd>{{product.name}}</dd>
+            <dt>Price:</dt>
+            <dd>{{product.display_price}}</dd>
+          </dl>
+        </li>
+      </ol>
+    </main>
   `,
   providers: [TaxonService]
 })

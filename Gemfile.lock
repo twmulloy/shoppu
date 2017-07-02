@@ -1,6 +1,6 @@
 GIT
   remote: https://github.com/AlchemyCMS/alchemy_cms.git
-  revision: e7dacc5b3353916ad505c57356a9716a84945b7f
+  revision: f9dd5a039b1a0c0a98de21d64e9e797b7d4c0766
   branch: master
   specs:
     alchemy_cms (4.0.0.beta)
@@ -29,7 +29,7 @@ GIT
 
 GIT
   remote: https://github.com/rails/webpacker.git
-  revision: 37a616ef0306be40fc3b3a0ad188c94cad1b0250
+  revision: b8e3873c921baf23de4c28caaaba6dae26adb0b9
   branch: master
   specs:
     webpacker (2.0)

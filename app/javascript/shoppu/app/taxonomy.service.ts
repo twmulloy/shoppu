@@ -38,10 +38,10 @@ export class TaxonomyService {
         [this.env.spree.key.param]: this.env.spree.key.token
       })
     }
-    return this.http.get(url, options).map(this.extractData)
+    return this.http.get(url, options).map(this.extractWrappedData)
   }
 
-  private extractData(res: Response) {
-    return res.json()
+  private extractWrappedData(res: Response) {
+    return res.json().root as Taxonomy
   }
 }

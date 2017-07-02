@@ -43,6 +43,6 @@ export class TaxonService {
   }
 
   private extractData(res: Response) {
-    return res.json()
+    return res.json() as Taxon
   }
 }

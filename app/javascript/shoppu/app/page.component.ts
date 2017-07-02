@@ -33,9 +33,8 @@ import { Page } from './page'
       <header>
         <h1>{{page?.title}}</h1>
       </header>
-      <section element *ngFor="let element of page?.elements" [element]="element"></section>
+      <section element *ngFor="let element of page?.elements" [item]="element"></section>
     </main>
-    <footer></footer>
   `,
   providers: [PageService]
 })

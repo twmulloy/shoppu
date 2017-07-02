@@ -4,10 +4,17 @@ import { TaxonomyService } from './taxonomy.service'
 import { Taxonomy } from './taxonomy'
 
 @Component({
-  selector: 'taxonomy',
+  selector: 'taxonomy,[taxonomy]',
   template: `
-    <pre>{{item | json}}</pre>
-    <pre>{{taxonomy | json}}</pre>
+    <header>
+      <h1>{{item.name}}</h1>
+    </header>
+    <section>
+      <header>
+        <h1>{{taxonomy?.name}}</h1>
+      </header>
+      <section taxon *ngFor="let taxon of taxonomy?.taxons" [item]="taxon"></section>
+    </section>
   `,
   providers: [TaxonomyService]
 })

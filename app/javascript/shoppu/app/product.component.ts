@@ -4,10 +4,22 @@ import { ProductService } from './product.service'
 import { Product } from './product'
 
 @Component({
-  selector: 'product',
+  selector: 'product,[product]',
   template: `
-    <pre>{{item | json}}</pre>
-    <pre>{{product | json}}</pre>
+    <header>
+      <h1>{{product?.name || item.name}}</h1>
+    </header>
+    <section>
+      <dl>
+        <dt>Description:</dt>
+        <dd>{{product?.description}}</dd>
+        <dt>Price:</dt>
+        <dd>{{product?.display_price}}</dd>
+        <dt>Quantity:</dt>
+        <dd>{{product?.total_on_hand}}</dd>
+      </dl>
+      <button>Buy</button>
+    </section>
   `,
   providers: [ProductService]
 })

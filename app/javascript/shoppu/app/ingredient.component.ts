@@ -3,27 +3,17 @@ import { Component, Input } from '@angular/core'
 import { Ingredient } from './ingredient'
 
 @Component({
-  selector: 'ingredient',
+  selector: 'ingredient,[ingredient]',
   template: `
-    <ng-container [ngSwitch]="ingredient.name">
-      <ng-container *ngSwitchCase="'headline'">
-        <h2>{{ingredient.value}}</h2>
-      </ng-container>
-      <ng-container *ngSwitchCase="'text'">
-        <div [innerHTML]="ingredient.value"></div>
-      </ng-container>
-      <ng-container *ngSwitchCase="'spree_taxonomy'">
-        <taxonomy [item]="ingredient.value"></taxonomy>
-      </ng-container>
-      <ng-container *ngSwitchCase="'spree_taxon'">
-        <taxon [item]="ingredient.value"></taxon>
-      </ng-container>
-      <ng-container *ngSwitchCase="'spree_product'">
-        <product [item]="ingredient.value"></product>
-      </ng-container>
+    <ng-container [ngSwitch]="item.name">
+      <h2 *ngSwitchCase="'headline'">{{item.value}}</h2>
+      <div *ngSwitchCase="'text'" [innerHTML]="item.value"></div>
+      <div *ngSwitchCase="'spree_taxonomy'" taxonomy [item]="item.value"></div>
+      <div *ngSwitchCase="'spree_taxon'"    taxon    [item]="item.value"></div>
+      <div *ngSwitchCase="'spree_product'"  product  [item]="item.value"></div>
     </ng-container>
   `
 })
 export class IngredientComponent {
-  @Input() ingredient: Ingredient
+  @Input() item: Ingredient
 }

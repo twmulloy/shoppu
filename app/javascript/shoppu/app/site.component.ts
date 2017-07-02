@@ -1,8 +1,5 @@
 import { Component, OnInit } from '@angular/core'
 
-import { EnvService } from './env.service'
-import { Env } from './env'
-
 import { PageService } from './page.service'
 import { Page } from './page'
 
@@ -13,23 +10,16 @@ import { Page } from './page'
   `
 })
 export class SiteComponent implements OnInit {
-  env: Env
   site: Page[]
   pages: Page[]
 
   constructor(
-    private envService: EnvService,
     private siteService: PageService
   ) {}
 
   ngOnInit(): void {
-    this.getEnv()
     this.getSite()
     this.getPages()
-  }
-
-  getEnv(): Env {
-    return this.env = this.envService.getEnv()
   }
 
   getSite(): void {
