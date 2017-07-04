@@ -12,14 +12,19 @@ import { Page } from './page'
     </header>
     <section>
       <ol>
-        <li *ngFor="let product of taxon?.products">
-          <dl>
-            <dt>Name:</dt>
-            <dd><a routerLink="/{{(product | productPageRoute:pages).urlname}}">{{product.name}}</a></dd>
-            <dt>Price:</dt>
-            <dd>{{product.display_price}}</dd>
-          </dl>
-        </li>
+        <ng-template #loading>
+          Loading...
+        </ng-template>
+        <ng-container *ngIf="taxon; else loading">
+          <li *ngFor="let product of taxon.products">
+            <dl>
+              <dt>Name:</dt>
+              <dd><a routerLink="/{{(product | productPageRoute:pages).urlname}}">{{product.name}}</a></dd>
+              <dt>Price:</dt>
+              <dd>{{product.display_price}}</dd>
+            </dl>
+          </li>
+        </ng-container>
       </ol>
     </section>
   `,

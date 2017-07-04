@@ -16,6 +16,7 @@ import { ProductComponent } from './product.component'
 import { ExtendedDataPipe } from './extended-data.pipe'
 import { ProductPageRoutePipe } from './product-page-route.pipe'
 // Services
+import { AlchemyService } from './alchemy.service'
 import { EnvService } from './env.service'
 import { PageService } from './page.service'
 
@@ -45,6 +46,7 @@ const appRoutes: Routes = [
   ],
   providers: [
     { provide: Window, useValue: window },
+    AlchemyService,
     EnvService,
     PageService
   ],

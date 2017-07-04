@@ -11,20 +11,24 @@ interface Item {
   name: 'productPageRoute'
 })
 export class ProductPageRoutePipe implements PipeTransform {
-  private item: Item = {}
+  private item: Item
 
   transform(product: Product, pages: Page[]): Item {
+    let item, page
+    if (product.slug) {
+      item = { urlname: product.slug }
+    }
+
     if (product.id && Array.isArray(pages)) {
-      this.item = pages.find(
+      page = pages.find(
         page => !!page.elements.find(
           element => !!element.ingredients.find(
             ingredient => ingredient.name === 'spree_product' && ingredient.value.id === product.id
           )
         )
-      ) || {
-        urlname: product.slug
-      } as Item
+      )
     }
-    return this.item
+
+    return page || item as Item
   }
 }

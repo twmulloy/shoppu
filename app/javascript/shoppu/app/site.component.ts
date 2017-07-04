@@ -1,34 +1,59 @@
 import { Component, OnInit } from '@angular/core'
+import { Observable } from 'rxjs/Observable'
+import 'rxjs/add/observable/forkJoin'
 
+import { AlchemyService } from './alchemy.service'
 import { PageService } from './page.service'
 import { Page } from './page'
+
+interface SitePages {
+  site: Page[],
+  pages: Page[]
+}
 
 @Component({
   selector: 'site',
   template: `
-    <page [site]="site" [pages]="pages"></page>
+    <ng-template #loading>
+      Loading...
+    </ng-template>
+    <ng-container *ngIf="sitePages; else loading">
+      <page [site]="sitePages.site" [pages]="sitePages.pages"></page>
+    </ng-container>
   `
 })
 export class SiteComponent implements OnInit {
-  site: Page[]
-  pages: Page[]
+  private alchemy: object
+  sitePages: SitePages
 
   constructor(
-    private siteService: PageService
+    private alchemyService: AlchemyService,
+    private pageService: PageService
   ) {}
 
   ngOnInit(): void {
-    this.getSite()
-    this.getPages()
+    this.alchemy = this.alchemyService.getAlchemy()
+    if (!!this.alchemy) {
+      this.getSite()
+    } else {
+      this.getSiteAndPages()
+    }
+  }
+
+  getSiteAndPages(): void {
+    Observable.forkJoin([
+      this.pageService.getSite(),
+      this.pageService.getPages()
+    ]).subscribe(sitePages => this.sitePages = {
+      site: sitePages[0],
+      pages: sitePages[1]
+    })
   }
 
   getSite(): void {
-    this.siteService.getSite()
-      .subscribe(site => this.site = site)
-  }
-
-  getPages(): void {
-    this.siteService.getPages()
-      .subscribe(pages => this.pages = pages)
+    this.pageService.getSite()
+      .subscribe(site => {
+        return this.sitePages = { ...this.sitePages, site }
+      })
   }
 }

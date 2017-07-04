@@ -7,15 +7,20 @@ import { Page } from './page'
 @Component({
   selector: '[taxonomy]',
   template: `
-    <header>
-      <h1>{{taxonomy?.name}}</h1>
-    </header>
-    <section
-      *ngFor="let taxon of taxonomy?.taxons"
-      taxon
-      [item]="taxon"
-      [pages]="pages"
-    ></section>
+    <ng-template #loading>
+      Loading {{item.name}}...
+    </ng-template>
+    <ng-container *ngIf="taxonomy; else loading">
+      <header>
+        <h1>{{taxonomy.name}}</h1>
+      </header>
+      <section
+        *ngFor="let taxon of taxonomy.taxons"
+        taxon
+        [item]="taxon"
+        [pages]="pages"
+      ></section>
+    </ng-container>
   `,
   providers: [TaxonomyService]
 })
