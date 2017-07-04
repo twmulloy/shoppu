@@ -6,6 +6,7 @@ import { RouterModule, Routes } from '@angular/router'
 import { AppComponent } from './app.component'
 import { SiteComponent } from './site.component'
 import { PageComponent } from './page.component'
+import { NavComponent } from './nav.component'
 import { ElementComponent } from './element.component'
 import { IngredientComponent } from './ingredient.component'
 import { TaxonomyComponent } from './taxonomy.component'
@@ -13,6 +14,7 @@ import { TaxonComponent } from './taxon.component'
 import { ProductComponent } from './product.component'
 // Pipes
 import { ExtendedDataPipe } from './extended-data.pipe'
+import { ProductPageRoutePipe } from './product-page-route.pipe'
 // Services
 import { EnvService } from './env.service'
 import { PageService } from './page.service'
@@ -27,12 +29,14 @@ const appRoutes: Routes = [
     AppComponent,
     SiteComponent,
     PageComponent,
+    NavComponent,
     ElementComponent,
     IngredientComponent,
     TaxonomyComponent,
     TaxonComponent,
     ProductComponent,
-    ExtendedDataPipe
+    ExtendedDataPipe,
+    ProductPageRoutePipe
   ],
   imports: [
     BrowserModule,

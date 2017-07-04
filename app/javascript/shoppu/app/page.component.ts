@@ -3,56 +3,50 @@ import { ActivatedRoute } from '@angular/router'
 
 import { PageService } from './page.service'
 import { Page } from './page'
+import { ProductService } from './product.service'
+import { Product } from './product'
 
 @Component({
   selector: 'page',
   template: `
-    <header>
-      <ng-container *ngFor="let root of site">
-        <ng-container *ngIf="root.root && root.public && root.visible">
-          <h1><a routerLink="/{{root.urlname === 'index' ? '' : root.urlname}}">{{root.name}}</a></h1>
-          <nav>
-            <ng-template #nav let-sitePages>
-              <ol>
-                <ng-container *ngFor="let sitePage of sitePages">
-                  <ng-container *ngIf="sitePage.public && sitePage.visible">
-                    <li>
-                      <a routerLink="/{{sitePage.urlname}}">{{(sitePage | extendedData:pages).title || sitePage.name}}</a>
-                      <ng-container *ngTemplateOutlet="nav; context:{ $implicit: sitePage.children }"></ng-container>
-                    </li>
-                  </ng-container>
-                </ng-container>
-              </ol>
-            </ng-template>
-            <ng-container *ngTemplateOutlet="nav; context:{ $implicit: root.children }"></ng-container>
-          </nav>
-        </ng-container>
-      </ng-container>
-    </header>
+    <header nav [site]="site" [pages]="pages"></header>
     <main>
-      <header>
-        <h1>{{page?.title}}</h1>
-      </header>
-      <section element *ngFor="let element of page?.elements" [item]="element"></section>
+      <ng-container *ngIf="product">
+        <section product [product]="product"></section>
+      </ng-container>
+      <ng-container *ngIf="page">
+        <header>
+          <h1>{{page.title}}</h1>
+        </header>
+        <section
+          *ngFor="let element of page.elements"
+          element
+          [item]="element"
+          [pages]="pages"
+        ></section>
+      </ng-container>
     </main>
   `,
-  providers: [PageService]
+  providers: [
+    PageService,
+    ProductService
+  ]
 })
 export class PageComponent implements OnChanges {
   @Input() site: Page[]
   @Input() pages: Page[]
   page: Page
+  product: Product
 
   constructor(
+    private route: ActivatedRoute,
     private pageService: PageService,
-    private route: ActivatedRoute
+    private productService: ProductService
   ) {}
 
   ngOnChanges(changes: SimpleChanges): void {
     if (changes.site && changes.site.currentValue) {
-      this.route.url.subscribe(segments => {
-        this.getPage(segments)
-      })
+      this.route.url.subscribe(segments => this.getPage(segments))
     }
   }
 
@@ -65,6 +59,24 @@ export class PageComponent implements OnChanges {
     }
 
     this.pageService.getPage(segments, root)
-      .subscribe(page => this.page = page)
+      .subscribe(
+        page => {
+          delete this.product
+          return this.page = page
+        },
+        err => {
+          if (err.status === 404) { this.getProduct(segments) }
+        }
+      )
+  }
+
+  getProduct(segments: any[]): void {
+    this.productService.getProduct(segments[0].path)
+      .subscribe(
+        product => {
+          delete this.page
+          return this.product = product
+        }
+      )
   }
 }

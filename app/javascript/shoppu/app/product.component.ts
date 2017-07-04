@@ -4,7 +4,7 @@ import { ProductService } from './product.service'
 import { Product } from './product'
 
 @Component({
-  selector: 'product,[product]',
+  selector: '[product]',
   template: `
     <header>
       <h1>{{product?.name || item.name}}</h1>
@@ -25,14 +25,14 @@ import { Product } from './product'
 })
 export class ProductComponent implements OnInit {
   @Input() item: Product
-  product: Product
+  @Input() product: Product
 
   constructor(
     private productService: ProductService
   ) {}
 
   ngOnInit(): void {
-    this.getProduct()
+    if (!this.product) { this.getProduct() }
   }
 
   getProduct(): void {

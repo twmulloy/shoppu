@@ -28,6 +28,10 @@ export class TaxonService {
     return this.envService.getEnv()
   }
 
+  private extractData(res: Response) {
+    return res.json() as Taxon
+  }
+
   getTaxonProducts(id: number): Observable<Taxon> {
     const url = [
       this.env.spree.root_url,
@@ -40,9 +44,5 @@ export class TaxonService {
       params: { id }
     }
     return this.http.get(url, options).map(this.extractData)
-  }
-
-  private extractData(res: Response) {
-    return res.json() as Taxon
   }
 }

@@ -2,9 +2,10 @@ import { Component, Input, OnInit } from '@angular/core'
 
 import { TaxonService } from './taxon.service'
 import { Taxon } from './taxon'
+import { Page } from './page'
 
 @Component({
-  selector: 'taxon,[taxon]',
+  selector: '[taxon]',
   template: `
     <header>
       <h1>{{item.name}}</h1>
@@ -14,7 +15,7 @@ import { Taxon } from './taxon'
         <li *ngFor="let product of taxon?.products">
           <dl>
             <dt>Name:</dt>
-            <dd><a routerLink="">{{product.name}}</a></dd>
+            <dd><a routerLink="/{{(product | productPageRoute:pages).urlname}}">{{product.name}}</a></dd>
             <dt>Price:</dt>
             <dd>{{product.display_price}}</dd>
           </dl>
@@ -26,6 +27,7 @@ import { Taxon } from './taxon'
 })
 export class TaxonComponent implements OnInit {
   @Input() item: Taxon
+  @Input() pages: Page[]
   taxon: Taxon
 
   constructor(

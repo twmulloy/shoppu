@@ -19,6 +19,22 @@ export class PageService {
     this.env = this.getEnv()
   }
 
+  private getEnv(): Env {
+    return this.envService.getEnv()
+  }
+
+  private isAdminRoute(segments: any[]): boolean {
+    return !!segments.find(segment => segment.path === 'admin')
+  }
+
+  private extractWrappedData(res: Response) {
+    return res.json().pages as Page[]
+  }
+
+  private extractData(res: Response) {
+    return res.json()
+  }
+
   getSite(): Observable<Page[]> {
     const url = this.env.routes.alchemy_api_page_path('nested')
     return this.http.get(url).map(this.extractWrappedData)
@@ -44,21 +60,5 @@ export class PageService {
     }
 
     return this.http.get(url).map(this.extractData)
-  }
-
-  private getEnv(): Env {
-    return this.envService.getEnv()
-  }
-
-  private isAdminRoute(segments: any[]): boolean {
-    return !!segments.find(segment => segment.path === 'admin')
-  }
-
-  private extractWrappedData(res: Response) {
-    return res.json().pages as Page[]
-  }
-
-  private extractData(res: Response) {
-    return res.json()
   }
 }

@@ -28,6 +28,10 @@ export class ProductService {
     return this.envService.getEnv()
   }
 
+  private extractData(res: Response) {
+    return res.json()
+  }
+
   getProduct(id: number): Observable<Product> {
     const url = [
       this.env.spree.root_url,
@@ -38,10 +42,7 @@ export class ProductService {
         [this.env.spree.key.param]: this.env.spree.key.token
       })
     }
-    return this.http.get(url, options).map(this.extractData)
-  }
-
-  private extractData(res: Response) {
-    return res.json()
+    return this.http.get(url, options)
+      .map(this.extractData)
   }
 }

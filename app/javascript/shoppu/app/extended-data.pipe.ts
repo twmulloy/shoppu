@@ -1,18 +1,19 @@
 import { Pipe, PipeTransform } from '@angular/core'
 
 interface Item {
-  id: number | string
+  [prop: string]: any
 }
 
 @Pipe({
   name: 'extendedData'
 })
 export class ExtendedDataPipe implements PipeTransform {
-  transform(item: Item, listItems: any[]): any {
-    let listItem = {}
+  private item: Item = {}
+
+  transform(item: Item, listItems: Item[]): Item {
     if (item.id && Array.isArray(listItems)) {
-      listItem = listItems.find(listItem => listItem.id === item.id)
+      this.item = listItems.find(listItem => listItem.id === item.id) || {} as Item
     }
-    return listItem
+    return this.item
   }
 }

@@ -28,6 +28,10 @@ export class TaxonomyService {
     return this.envService.getEnv()
   }
 
+  private extractWrappedData(res: Response) {
+    return res.json().root as Taxonomy
+  }
+
   getTaxonomy(id: number): Observable<Taxonomy> {
     const url = [
       this.env.spree.root_url,
@@ -39,9 +43,5 @@ export class TaxonomyService {
       })
     }
     return this.http.get(url, options).map(this.extractWrappedData)
-  }
-
-  private extractWrappedData(res: Response) {
-    return res.json().root as Taxonomy
   }
 }

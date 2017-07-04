@@ -5,6 +5,7 @@ class ApplicationController < ActionController::Base
 
   protected
 
+  # rubocop:disable MethodLength
   def env
     gon.push(
       alchemy: {
@@ -27,4 +28,5 @@ class ApplicationController < ActionController::Base
       }
     )
   end
+  # rubocop:enable MethodLength
 end
