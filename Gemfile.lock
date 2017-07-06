@@ -1,6 +1,6 @@
 GIT
   remote: https://github.com/AlchemyCMS/alchemy_cms.git
-  revision: f9dd5a039b1a0c0a98de21d64e9e797b7d4c0766
+  revision: 0996813d94efd3c5458daa93468285cca0c1227f
   branch: master
   specs:
     alchemy_cms (4.0.0.beta)
@@ -29,7 +29,7 @@ GIT
 
 GIT
   remote: https://github.com/rails/webpacker.git
-  revision: b8e3873c921baf23de4c28caaaba6dae26adb0b9
+  revision: 375e9ff1e4f5f5c4ade804ca9aaaa4182e9808f3
   branch: master
   specs:
     webpacker (2.0)
@@ -87,13 +87,13 @@ GEM
       tzinfo (~> 1.1)
     acts-as-taggable-on (4.0.0)
       activerecord (>= 4.0)
-    acts_as_list (0.9.5)
+    acts_as_list (0.9.6)
       activerecord (>= 3.0)
     addressable (2.5.1)
       public_suffix (~> 2.0, >= 2.0.2)
     arel (7.1.4)
     ast (2.3.0)
-    autoprefixer-rails (7.1.1.2)
+    autoprefixer-rails (7.1.1.3)
       execjs
     awesome_nested_set (3.1.3)
       activerecord (>= 4.0.0, < 5.2)
