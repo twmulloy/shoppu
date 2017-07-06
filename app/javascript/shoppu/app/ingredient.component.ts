@@ -9,20 +9,18 @@ import { Page } from './page'
     <ng-container [ngSwitch]="item.name">
       <h2 *ngSwitchCase="'headline'">{{item.value}}</h2>
       <div *ngSwitchCase="'text'" [innerHTML]="item.value"></div>
-      <div
-        *ngSwitchCase="'spree_taxonomy'"
+      <div *ngSwitchCase="'youtube_id'" video [item]="item"></div>
+      <div *ngSwitchCase="'spree_taxonomy'"
         taxonomy
         [item]="item.value"
         [pages]="pages"
       ></div>
-      <div
-        *ngSwitchCase="'spree_taxon'"
+      <div *ngSwitchCase="'spree_taxon'"
         taxon
         [item]="item.value"
         [pages]="pages"
       ></div>
-      <div
-        *ngSwitchCase="'spree_product'"
+      <div *ngSwitchCase="'spree_product'"
         product
         [item]="item.value"
       ></div>

@@ -1,7 +1,3 @@
-# == In this configuration, you set up Alchemy's element layouts.
-#
-# For further information please see http://guides.alchemy-cms.com/stable/elements.html
-
 - name: article
   hint: true
   contents:
@@ -15,7 +11,15 @@
     type: EssenceRichtext
     hint: true
 
-# Spree elements
+- name: video
+  hint: true
+  contents:
+  - name: youtube_id
+    type: EssenceText
+    hint: true
+    validate:
+    - presence
+
 - name: taxonomy
   hint: true
   contents:

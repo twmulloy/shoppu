@@ -7,7 +7,7 @@ import { Page } from './page'
   selector: '[element]',
   template: `
     <div
-      *ngFor="let ingredient of item?.ingredients"
+      *ngFor="let ingredient of item.ingredients"
       ingredient
       [item]="ingredient"
       [pages]="pages"

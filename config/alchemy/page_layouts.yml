@@ -1,37 +1,25 @@
-# == This file defines the page layouts for new pages.
-#
-# For further information please see http://guides.alchemy-cms.com/stable/page_layouts.html
-
 - name: index
-  elements:
-    - article
+  elements: &elements
+  - article
+  - video
+  - taxonomy
+  - taxon
+  - product
 
 - name: page
-  elements:
-    - article
-  autogenerate:
-    - article
+  elements: *elements
 
 - name: taxonomy
-  elements:
-    - taxonomy
-    - taxon
-    - product
+  elements: *elements
   autogenerate:
-    - taxonomy
+  - taxonomy
 
 - name: taxon
-  elements:
-    - taxonomy
-    - taxon
-    - product
+  elements: *elements
   autogenerate:
-    - taxon
+  - taxon
 
 - name: product
-  elements:
-    - taxonomy
-    - taxon
-    - product
+  elements: *elements
   autogenerate:
-    - product
+  - product

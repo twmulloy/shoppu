@@ -12,6 +12,7 @@ import { IngredientComponent } from './ingredient.component'
 import { TaxonomyComponent } from './taxonomy.component'
 import { TaxonComponent } from './taxon.component'
 import { ProductComponent } from './product.component'
+import { VideoComponent } from './video.component'
 // Pipes
 import { ExtendedDataPipe } from './extended-data.pipe'
 import { ProductPageRoutePipe } from './product-page-route.pipe'
@@ -27,6 +28,7 @@ const appRoutes: Routes = [
 
 @NgModule({
   declarations: [
+    // Components
     AppComponent,
     SiteComponent,
     PageComponent,
@@ -36,6 +38,8 @@ const appRoutes: Routes = [
     TaxonomyComponent,
     TaxonComponent,
     ProductComponent,
+    VideoComponent,
+    // Pipes
     ExtendedDataPipe,
     ProductPageRoutePipe
   ],
