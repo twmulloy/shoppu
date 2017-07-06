@@ -6,20 +6,25 @@ import { Product } from './product'
 @Component({
   selector: '[product]',
   template: `
-    <header>
-      <h1>{{product?.name || item.name}}</h1>
-    </header>
-    <section>
-      <dl>
-        <dt>Description:</dt>
-        <dd>{{product?.description}}</dd>
-        <dt>Price:</dt>
-        <dd>{{product?.display_price}}</dd>
-        <dt>Quantity:</dt>
-        <dd>{{product?.total_on_hand}}</dd>
-      </dl>
-      <button>Buy</button>
-    </section>
+    <ng-template #loading>
+      Loading {{item.name}}...
+    </ng-template>
+    <ng-container *ngIf="product; else loading">
+      <header>
+        <h1>{{product.name}}</h1>
+      </header>
+      <section>
+        <dl>
+          <dt>Description:</dt>
+          <dd>{{product.description}}</dd>
+          <dt>Price:</dt>
+          <dd>{{product.display_price}}</dd>
+          <dt>Quantity:</dt>
+          <dd>{{product.total_on_hand}}</dd>
+        </dl>
+        <button>Buy</button>
+      </section>
+    </ng-container>
   `,
   providers: [ProductService]
 })

@@ -13,7 +13,7 @@ import { Page } from './page'
     <section>
       <ol>
         <ng-template #loading>
-          Loading...
+          Loading {{item.name}}...
         </ng-template>
         <ng-container *ngIf="taxon; else loading">
           <li *ngFor="let product of taxon.products">
