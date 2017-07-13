@@ -9,5 +9,6 @@ export interface Page {
   public?: boolean,
   visible?: boolean,
   children?: Page[],
-  title?: string
+  title?: string,
+  page_layout?: string
 }

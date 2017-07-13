@@ -13,6 +13,7 @@ import { TaxonomyComponent } from './taxonomy.component'
 import { TaxonComponent } from './taxon.component'
 import { ProductComponent } from './product.component'
 import { VideoComponent } from './video.component'
+import { CartComponent } from './cart/component'
 // Pipes
 import { ExtendedDataPipe } from './extended-data.pipe'
 import { ProductPageRoutePipe } from './product-page-route.pipe'
@@ -39,6 +40,7 @@ const appRoutes: Routes = [
     TaxonComponent,
     ProductComponent,
     VideoComponent,
+    CartComponent,
     // Pipes
     ExtendedDataPipe,
     ProductPageRoutePipe

@@ -29,6 +29,9 @@ import { Page } from './page'
           </ng-template>
           <ng-container *ngTemplateOutlet="nav; context:{ $implicit: root.children }"></ng-container>
         </nav>
+        <ng-container *ngIf="page">
+          <cart></cart>
+        </ng-container>
       </ng-container>
     </ng-container>
   `
@@ -36,4 +39,5 @@ import { Page } from './page'
 export class NavComponent {
   @Input() site: Page[]
   @Input() pages: Page[]
+  @Input() page: Page
 }
