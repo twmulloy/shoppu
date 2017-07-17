@@ -1,9 +1,17 @@
-import { Component } from '@angular/core'
+import { Component, OnChanges, SimpleChanges } from '@angular/core'
 
 @Component({
-  selector: 'cart',
+  selector: 'cart,[cart]',
   template: `
-    <h1>Cart</h1>
+    <ol>
+      <li>A Product</li>
+    </ol>
   `
 })
-export class CartComponent {}
+export class CartComponent implements OnChanges {
+  constructor() {}
+
+  ngOnChanges(changes: SimpleChanges): void {
+    console.log(changes)
+  }
+}

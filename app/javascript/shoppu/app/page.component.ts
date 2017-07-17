@@ -10,14 +10,21 @@ import { Product } from './product'
   selector: 'page',
   template: `
     <ng-container *ngIf="product">
-      <header nav [site]="site" [pages]="pages"></header>
+      <header nav
+        [site]="site"
+        [pages]="pages"
+      ></header>
       <main>
         <section product [product]="product"></section>
       </main>
     </ng-container>
     <ng-container *ngIf="page" [ngSwitch]="page.page_layout">
       <ng-container *ngSwitchDefault>
-        <header nav [site]="site" [pages]="pages" [page]="page"></header>
+        <header nav
+          [site]="site"
+          [pages]="pages"
+          [page]="page"
+        ></header>
         <main>
           <header>
             <h1>{{page.title}}</h1>
