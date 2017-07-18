@@ -15,19 +15,6 @@ import { Page } from './page'
         <nav>
           <ol>
             <li>
-              <a href="javascript:void(0)" (click)="toggleCart()">
-                <i class="icon-basket"></i>
-              </a>
-              <nav *ngIf="showCart">
-                <header>
-                  <a href="javascript:void(0)" (click)="toggleCart()">
-                    <i class="icon-cancel"></i>
-                  </a>
-                </header>
-                <section cart></section>
-              </nav>
-            </li>
-            <li>
               <a href="javascript:void(0)" (click)="toggleNav()">
                 <i class="icon-menu"></i>
               </a>
@@ -54,6 +41,19 @@ import { Page } from './page'
                   </section>
                 </ng-template>
                 <ng-container *ngTemplateOutlet="nav; context:{ $implicit: root.children }"></ng-container>
+              </nav>
+            </li>
+            <li>
+              <a href="javascript:void(0)" (click)="toggleCart()">
+                <i class="icon-basket"></i>
+              </a>
+              <nav *ngIf="showCart">
+                <header>
+                  <a href="javascript:void(0)" (click)="toggleCart()">
+                    <i class="icon-cancel"></i>
+                  </a>
+                </header>
+                <section cart></section>
               </nav>
             </li>
           </ol>

@@ -18,7 +18,7 @@ gem 'uglifier', '>= 1.3.0'
 gem 'spree_api', '~> 3.2.1'
 gem 'spree_backend', '~> 3.2.1'
 gem 'spree_core', '~> 3.2.1'
-gem 'spree_frontend', '~> 3.2.1'
+gem 'spree_frontend', '~> 3.2.1' # TODO: Phaseout
 gem 'spree_sample', '~> 3.2.1' # TODO: Remove
 gem 'spree_auth_devise', '~> 3.2.0'
 gem 'spree_gateway', '~> 3.2.0'
