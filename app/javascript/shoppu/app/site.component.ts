@@ -5,6 +5,8 @@ import 'rxjs/add/observable/forkJoin'
 import { AlchemyService } from './alchemy.service'
 import { PageService } from './page.service'
 import { Page } from './page'
+import { OrderService } from './order.service'
+import { Order } from './order'
 
 interface SitePages {
   site: Page[],
@@ -18,17 +20,23 @@ interface SitePages {
       Loading...
     </ng-template>
     <ng-container *ngIf="sitePages; else loading">
-      <page [site]="sitePages.site" [pages]="sitePages.pages"></page>
+      <page
+        [site]="sitePages.site"
+        [pages]="sitePages.pages"
+        [currentOrder]="currentOrder"
+      ></page>
     </ng-container>
   `
 })
 export class SiteComponent implements OnInit {
   private alchemy: object
   sitePages: SitePages
+  currentOrder: Order
 
   constructor(
     private alchemyService: AlchemyService,
-    private pageService: PageService
+    private pageService: PageService,
+    private orderService: OrderService
   ) {}
 
   ngOnInit(): void {
@@ -38,6 +46,8 @@ export class SiteComponent implements OnInit {
     } else {
       this.getSiteAndPages()
     }
+
+    this.getCurrentOrder()
   }
 
   getSiteAndPages(): void {
@@ -55,5 +65,10 @@ export class SiteComponent implements OnInit {
       .subscribe(site => {
         return this.sitePages = { ...this.sitePages, site }
       })
+  }
+
+  getCurrentOrder(): void {
+    this.orderService.getCurrentOrder()
+      .subscribe(order => this.currentOrder = order)
   }
 }

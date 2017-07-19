@@ -5,6 +5,7 @@ import { PageService } from './page.service'
 import { Page } from './page'
 import { ProductService } from './product.service'
 import { Product } from './product'
+import { Order } from './order'
 
 @Component({
   selector: 'page',
@@ -47,6 +48,7 @@ import { Product } from './product'
 export class PageComponent implements OnChanges {
   @Input() site: Page[]
   @Input() pages: Page[]
+  @Input() currentOrder: Order
   page: Page
   product: Product
 

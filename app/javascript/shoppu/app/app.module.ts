@@ -13,7 +13,7 @@ import { TaxonomyComponent } from './taxonomy.component'
 import { TaxonComponent } from './taxon.component'
 import { ProductComponent } from './product.component'
 import { VideoComponent } from './video.component'
-import { CartComponent } from './cart/component'
+import { CartComponent } from './cart.component'
 // Pipes
 import { ExtendedDataPipe } from './extended-data.pipe'
 import { ProductPageRoutePipe } from './product-page-route.pipe'
@@ -21,6 +21,7 @@ import { ProductPageRoutePipe } from './product-page-route.pipe'
 import { AlchemyService } from './alchemy.service'
 import { EnvService } from './env.service'
 import { PageService } from './page.service'
+import { OrderService } from './order.service'
 
 const appRoutes: Routes = [
   { path: 'index', redirectTo: '' },
@@ -54,7 +55,8 @@ const appRoutes: Routes = [
     { provide: Window, useValue: window },
     AlchemyService,
     EnvService,
-    PageService
+    PageService,
+    OrderService
   ],
   bootstrap: [
     AppComponent
