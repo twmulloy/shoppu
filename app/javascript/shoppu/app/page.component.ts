@@ -25,6 +25,7 @@ import { Order } from './order'
           [site]="site"
           [pages]="pages"
           [page]="page"
+          [currentOrder]="currentOrder"
         ></header>
         <main>
           <header>

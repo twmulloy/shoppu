@@ -2,6 +2,7 @@ import { NgModule } from '@angular/core'
 import { BrowserModule } from '@angular/platform-browser'
 import { HttpModule } from '@angular/http'
 import { RouterModule, Routes } from '@angular/router'
+import { FormsModule } from '@angular/forms'
 // Components
 import { AppComponent } from './app.component'
 import { SiteComponent } from './site.component'
@@ -49,7 +50,8 @@ const appRoutes: Routes = [
   imports: [
     BrowserModule,
     HttpModule,
-    RouterModule.forRoot(appRoutes)
+    RouterModule.forRoot(appRoutes),
+    FormsModule
   ],
   providers: [
     { provide: Window, useValue: window },

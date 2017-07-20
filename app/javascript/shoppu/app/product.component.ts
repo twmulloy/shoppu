@@ -22,7 +22,9 @@ import { Product } from './product'
           <dt>Quantity:</dt>
           <dd>{{product.total_on_hand}}</dd>
         </dl>
-        <button>Buy</button>
+        <form #f="ngForm" (ngSubmit)="onSubmit(f)">
+          <button type="submit">Buy</button>
+        </form>
       </section>
     </ng-container>
   `,
@@ -43,5 +45,9 @@ export class ProductComponent implements OnInit {
   getProduct(): void {
     this.productService.getProduct(this.item.id)
       .subscribe(product => this.product = product)
+  }
+
+  onSubmit(form): void {
+    console.log('submit', form)
   }
 }

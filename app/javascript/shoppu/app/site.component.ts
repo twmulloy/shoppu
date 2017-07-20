@@ -69,6 +69,16 @@ export class SiteComponent implements OnInit {
 
   getCurrentOrder(): void {
     this.orderService.getCurrentOrder()
+      .subscribe(order => {
+        this.currentOrder = order
+        if (!this.currentOrder) {
+          this.newOrder()
+        }
+      })
+  }
+
+  newOrder(): void {
+    this.orderService.new()
       .subscribe(order => this.currentOrder = order)
   }
 }

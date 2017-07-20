@@ -1,11 +1,18 @@
-import { Component } from '@angular/core'
+import { Component, Input } from '@angular/core'
+
+import { Order } from './order'
 
 @Component({
   selector: 'cart,[cart]',
   template: `
-    <ol>
-      <li>A Product</li>
-    </ol>
+    <ng-template #loading>
+      Loading...
+    </ng-template>
+    <ng-container *ngIf="order; else loading">
+      <pre>{{order | json}}</pre>
+    </ng-container>
   `
 })
-export class CartComponent {}
+export class CartComponent {
+  @Input() order: Order
+}

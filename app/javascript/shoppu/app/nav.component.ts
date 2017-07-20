@@ -1,6 +1,7 @@
 import { Component, Input } from '@angular/core'
 
 import { Page } from './page'
+import { Order } from './order'
 
 @Component({
   selector: '[nav]',
@@ -53,7 +54,7 @@ import { Page } from './page'
                     <i class="icon-cancel"></i>
                   </a>
                 </header>
-                <section cart></section>
+                <section cart [order]="currentOrder"></section>
               </nav>
             </li>
           </ol>
@@ -66,6 +67,7 @@ export class NavComponent {
   @Input() site: Page[]
   @Input() pages: Page[]
   @Input() page: Page
+  @Input() currentOrder: Order
 
   showCart: boolean = false
   showNav: boolean = false
