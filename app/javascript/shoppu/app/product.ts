@@ -1,3 +1,5 @@
+import { OptionType, OptionValue } from './option'
+
 export interface Product {
   id: number,
   name: string,
@@ -9,5 +11,7 @@ export interface Product {
   has_variants?: boolean,
   master?: Product,
   variants?: Product[],
-  in_stock?: boolean
+  in_stock?: boolean,
+  option_types?: OptionType[],
+  option_values?: OptionValue[]
 }

@@ -2,6 +2,7 @@ import { Component, Input, OnInit } from '@angular/core'
 
 import { ProductService } from './product.service'
 import { Product } from './product'
+import { OptionValue } from './option'
 
 @Component({
   selector: '[product]',
@@ -10,8 +11,8 @@ import { Product } from './product'
       Loading {{item.name}}...
     </ng-template>
     <ng-container *ngIf="product; else loading">
+      <!--<pre>{{ product | json }}</pre>-->
       <ng-container *ngIf="variant; else loading">
-        <!--<pre>{{variant | json}}</pre>-->
         <header>
           <h1>{{variant.name}}</h1>
         </header>
@@ -23,9 +24,19 @@ import { Product } from './product'
             <dd>{{variant.display_price}}</dd>
           </dl>
           <form #f="ngForm" (ngSubmit)="onSubmit(f)">
-            <ng-container *ngIf="product.has_variants">
-              <select></select>
-            </ng-container>
+            <ol *ngIf="product.has_variants">
+              <li *ngFor="let optionType of product.option_types">
+                <label>{{optionType.presentation}}</label>
+                <select>
+                  <option
+                    *ngFor="let optionValue of (optionValues | filter:'option_type_id':optionType.id)"
+                    [value]="optionValue.id"
+                  >
+                    {{optionValue.presentation}}
+                  </option>
+                </select>
+              </li>
+            </ol>
             <ng-container *ngIf="!variant.in_stock">
               <ng-container *ngIf="variant.is_backorderable">
                 <input type="number" value="1" min="1" />
@@ -47,7 +58,8 @@ import { Product } from './product'
 export class ProductComponent implements OnInit {
   @Input() item: Product
   @Input() product: Product
-  variant: Product
+  public variant: Product
+  public optionValues: OptionValue[]
 
   constructor(
     private productService: ProductService
@@ -57,11 +69,21 @@ export class ProductComponent implements OnInit {
     if (!this.product) { this.getProduct() }
   }
 
+  getOptions(): void {
+    this.optionValues = []
+    this.product.variants.forEach(
+      variant => variant.option_values.forEach(
+        optionValue => this.optionValues.push(optionValue)
+      )
+    )
+  }
+
   getProduct(): void {
     this.productService.getProduct(this.item.id)
       .subscribe(product => {
         this.product = product
         this.variant = product.has_variants ? product.variants[0] : product.master
+        this.getOptions()
         return this.product
       })
   }
