@@ -25,12 +25,16 @@ import { OptionValue } from './option'
           </dl>
           <form #f="ngForm" (ngSubmit)="onSubmit(f)">
             <ol *ngIf="product.has_variants">
-              <li *ngFor="let optionType of product.option_types">
+              <li *ngFor="let optionType of product.option_types; let i = index">
                 <label>{{optionType.presentation}}</label>
-                <select>
+                <select
+                  [name]="optionType.name"
+                  [(ngModel)]="selectedOptions[i]"
+                  (ngModelChange)="onSelectOptionChange($event)"
+                >
                   <option
-                    *ngFor="let optionValue of (optionValues | filter:'option_type_id':optionType.id)"
-                    [value]="optionValue.id"
+                    *ngFor="let optionValue of optionValues[i]"
+                    [ngValue]="optionValue"
                   >
                     {{optionValue.presentation}}
                   </option>
@@ -59,7 +63,8 @@ export class ProductComponent implements OnInit {
   @Input() item: Product
   @Input() product: Product
   public variant: Product
-  public optionValues: OptionValue[]
+  public optionValues: Array<any>
+  public selectedOptions: OptionValue[]
 
   constructor(
     private productService: ProductService
@@ -70,19 +75,35 @@ export class ProductComponent implements OnInit {
   }
 
   getOptions(): void {
-    this.optionValues = []
+    const optionTypes = this.product.option_types
+    this.optionValues = new Array(optionTypes.length)
+
     this.product.variants.forEach(
       variant => variant.option_values.forEach(
-        optionValue => this.optionValues.push(optionValue)
+        (optionValue, i) => {
+          if (typeof this.optionValues[i] === 'undefined') {
+            this.optionValues[i] = [] as OptionValue[]
+          }
+
+          if (typeof this.optionValues[i].find(v => v.id === optionValue.id) === 'undefined') {
+            this.optionValues[i].push(optionValue)
+          }
+        }
       )
     )
+
+    // Set each selected option to first option value
+    this.selectedOptions = this.optionValues.map(optionValue => optionValue[0])
+    this.onSelectOptionChange()
   }
 
   getProduct(): void {
     this.productService.getProduct(this.item.id)
       .subscribe(product => {
         this.product = product
-        this.variant = product.has_variants ? product.variants[0] : product.master
+        this.variant = product.has_variants
+          ? product.variants[0]
+          : product.master
         this.getOptions()
         return this.product
       })
@@ -90,5 +111,20 @@ export class ProductComponent implements OnInit {
 
   onSubmit(form): void {
     console.log('submit', form)
+  }
+
+  onSelectOptionChange(option?: OptionValue): void {
+    const selectedVariant = this.product.variants.find(
+      variant => variant.option_values.map(
+        (optionValue, i) => optionValue.id === this.selectedOptions[i].id
+      )
+      .every(value => value)
+    )
+
+    if (selectedVariant) {
+      this.variant = selectedVariant
+    } else {
+      console.error('no variant found with options', this.selectedOptions)
+    }
   }
 }

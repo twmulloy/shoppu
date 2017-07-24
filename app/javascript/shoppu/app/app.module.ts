@@ -16,7 +16,6 @@ import { ProductComponent } from './product.component'
 import { VideoComponent } from './video.component'
 import { CartComponent } from './cart.component'
 // Pipes
-import { FilterPipe } from './filter.pipe'
 import { ExtendedDataPipe } from './extended-data.pipe'
 import { ProductPageRoutePipe } from './product-page-route.pipe'
 // Services
@@ -45,7 +44,6 @@ const appRoutes: Routes = [
     VideoComponent,
     CartComponent,
     // Pipes
-    FilterPipe,
     ExtendedDataPipe,
     ProductPageRoutePipe
   ],
