@@ -14,4 +14,9 @@ export class OrderService extends SpreeService {
     const url = this.buildUrl('spree_api_v1_orders_path')
     return this.post(url).map(this.extractData)
   }
+
+  public addLineItem(orderId: string, lineItem: LineItem): Observable<LineItem> {
+    const url = this.buildUrl('spree_api_v1_order_line_items_path', orderId)
+    return this.post(url, lineItem).map(this.extractData)
+  }
 }
