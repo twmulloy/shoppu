@@ -36,6 +36,7 @@ import { Product } from './product'
                   <option
                     *ngFor="let optionValue of optionValues[i]"
                     [ngValue]="optionValue"
+                    [disabled]="optionValue._disabled"
                   >
                     {{optionValue.presentation}}
                   </option>
@@ -159,6 +160,7 @@ export class ProductComponent implements OnInit {
 
   onSubmit(form): void {
     console.log('submit', form, this.lineItem)
+    // this.orderService.addLineItem(this.lineItem)
   }
 
   onSelectOptionChange(): void {

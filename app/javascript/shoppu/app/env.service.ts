@@ -6,7 +6,7 @@ import { Env } from './env'
 export class EnvService {
   constructor(@Inject(Window) private window) {}
 
-  getEnv(): Env {
+  public getEnv(): Env {
     return this.window.env
   }
 }
