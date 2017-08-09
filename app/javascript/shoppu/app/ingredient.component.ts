@@ -20,10 +20,7 @@ import { Page } from './page'
         [item]="item.value"
         [pages]="pages"
       ></div>
-      <div *ngSwitchCase="'spree_product'"
-        product
-        [item]="item.value"
-      ></div>
+      <div *ngSwitchCase="'spree_product'" product [item]="item.value"></div>
     </ng-container>
   `
 })

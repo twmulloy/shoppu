@@ -16,7 +16,9 @@ import { Order } from './order'
         [pages]="pages"
       ></header>
       <main>
-        <section product [product]="product"></section>
+        <section>
+          <div product [item]="product"></div>
+        </section>
       </main>
     </ng-container>
     <ng-container *ngIf="page" [ngSwitch]="page.page_layout">
