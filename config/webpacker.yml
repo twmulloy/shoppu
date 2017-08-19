@@ -8,9 +8,7 @@ default: &default
   extensions:
     - .erb
     - .js
-    - .jsx
     - .ts
-    - .vue
     - .sass
     - .scss
     - .css

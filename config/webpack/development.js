@@ -18,7 +18,7 @@ module.exports = merge(sharedConfig, {
   devServer: {
     clientLogLevel: 'none',
     https: settings.dev_server.https,
-    // BUG: causes excess `xhr_streaming` and `info` logging in js console.
+    // BUG: Following line causes excess `xhr_streaming` and `info` logging in js console.
     // host: settings.dev_server.host,
     port: settings.dev_server.port,
     contentBase: output.path,
