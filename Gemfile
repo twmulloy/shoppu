@@ -1,4 +1,4 @@
-ruby '2.3.4'
+ruby '2.4.1'
 
 source 'https://rubygems.org'
 
@@ -19,7 +19,7 @@ gem 'spree_frontend', '~> 3.2.3' # TODO: Phaseout
 gem 'spree_sample', '~> 3.2.3' # TODO: Remove
 gem 'spree_auth_devise', '~> 3.2.0'
 gem 'spree_gateway', '~> 3.2.0'
-gem 'alchemy_cms', github: 'AlchemyCMS/alchemy_cms', branch: 'rails-5'
+gem 'alchemy_cms', '4.0.0.beta'
 gem 'webpacker', '~> 2.0'
 gem 'js-routes', '~> 1.3.3'
 gem 'gon', '~> 6.1.0'

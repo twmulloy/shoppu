@@ -25,6 +25,8 @@ SPREE_API_TOKEN=
 ```
 $ gem install bundler
 $ gem install foreman
+$ bundle
+$ yarn
 
 $ rails db:setup
 ```
@@ -42,13 +44,13 @@ Each time you pull, the following will likely need to be done.
 $ bundle
 
 # Npm
-$ npm i
+$ yarn
 
 # Migrate
 $ rails db:migrate
 
 # Run
-$ npm start
+$ yarn start
 ```
 
 #### Docker
@@ -60,7 +62,7 @@ $ docker-compose build
 $ docker-compose run --rm web bundle
 
 # Npm
-$ docker-compose run --rm web npm i
+$ docker-compose run --rm web yarn
 
 # Migrate
 $ docker-compose run --rm web rails db:migrate
@@ -79,4 +81,14 @@ $ docker build -t shoppu/shoppu .
 # Update Docker Hub image
 $ docker login
 $ docker push shoppu/shoppu
+```
+
+## Deployment
+### Google
+#### Dependencies
+* [Google Cloud SDK](https://cloud.google.com/sdk/downloads)
+
+#### Production
+```
+$ gcloud app deploy
 ```
